@@ -39,9 +39,7 @@ class GetHtml extends Command
     public function handle()
     {
         //
-        $url = 'https://www.eee551.com/htm/movielist1/';
         $url = 'http://www.80s.tw/ju/list/----12-';
-        $url = 'https://www.eee551.com/htm/pic1/170924.htm';
         $a = $this->curl_request($url);
         //include
         $html = new simple_html_dom();
