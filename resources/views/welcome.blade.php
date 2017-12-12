@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <script src="{{asset('js/vue.js')}}"></script>
         <title>Welcome</title>
 
         <!-- Styles -->
@@ -72,9 +72,17 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Welcome
+                    @{{ message }}
                 </div>
             </div>
         </div>
     </body>
+    <script>
+        new Vue({
+            el: '.title',
+            data: {
+                message: 'Welcome'
+            }
+        })
+    </script>
 </html>
