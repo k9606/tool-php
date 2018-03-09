@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/vue', function () {
     return view('vue');
 });
+
+Route::group(['namespace' => 'Test'], function() {
+    Route::resource('/test', 'TestController@test');
+});
