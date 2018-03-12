@@ -20,7 +20,8 @@
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database",
+            "app/Libs/aip-php-sdk-2.1.0"
         ],
         "psr-4": {
             "App\\": "app/"
