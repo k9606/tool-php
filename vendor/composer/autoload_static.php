@@ -21,7 +21,7 @@ class ComposerStaticInitf552daa799ac2a29694936bdf07fc081
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '4e8671d7be9056dcd04ddd9e8e15f9cc' => __DIR__ . '/..' . '/encore/laravel-admin/src/helpers.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
-        'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
+        'be2dabd89e6571c763d3c521b1c3701e' => __DIR__ . '/../..' . '/app/Helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -337,19 +337,19 @@ class ComposerStaticInitf552daa799ac2a29694936bdf07fc081
     );
 
     public static $classMap = array (
-        'AipBase' => __DIR__ . '/../..' . '/app/Libs/aip-php-sdk-2.1.0/lib/AipBase.php',
-        'AipFace' => __DIR__ . '/../..' . '/app/Libs/aip-php-sdk-2.1.0/AipFace.php',
-        'AipHttpClient' => __DIR__ . '/../..' . '/app/Libs/aip-php-sdk-2.1.0/lib/AipHttpClient.php',
-        'AipHttpUtil' => __DIR__ . '/../..' . '/app/Libs/aip-php-sdk-2.1.0/lib/AipBCEUtil.php',
-        'AipImageCensor' => __DIR__ . '/../..' . '/app/Libs/aip-php-sdk-2.1.0/AipImageCensor.php',
-        'AipImageClassify' => __DIR__ . '/../..' . '/app/Libs/aip-php-sdk-2.1.0/AipImageClassify.php',
-        'AipImageSearch' => __DIR__ . '/../..' . '/app/Libs/aip-php-sdk-2.1.0/AipImageSearch.php',
-        'AipKg' => __DIR__ . '/../..' . '/app/Libs/aip-php-sdk-2.1.0/AipKg.php',
-        'AipNlp' => __DIR__ . '/../..' . '/app/Libs/aip-php-sdk-2.1.0/AipNlp.php',
-        'AipOcr' => __DIR__ . '/../..' . '/app/Libs/aip-php-sdk-2.1.0/AipOcr.php',
-        'AipSampleSigner' => __DIR__ . '/../..' . '/app/Libs/aip-php-sdk-2.1.0/lib/AipBCEUtil.php',
-        'AipSignOption' => __DIR__ . '/../..' . '/app/Libs/aip-php-sdk-2.1.0/lib/AipBCEUtil.php',
-        'AipSpeech' => __DIR__ . '/../..' . '/app/Libs/aip-php-sdk-2.1.0/AipSpeech.php',
+        'AipBase' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/lib/AipBase.php',
+        'AipFace' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipFace.php',
+        'AipHttpClient' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/lib/AipHttpClient.php',
+        'AipHttpUtil' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/lib/AipBCEUtil.php',
+        'AipImageCensor' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipImageCensor.php',
+        'AipImageClassify' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipImageClassify.php',
+        'AipImageSearch' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipImageSearch.php',
+        'AipKg' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipKg.php',
+        'AipNlp' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipNlp.php',
+        'AipOcr' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipOcr.php',
+        'AipSampleSigner' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/lib/AipBCEUtil.php',
+        'AipSignOption' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/lib/AipBCEUtil.php',
+        'AipSpeech' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipSpeech.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',

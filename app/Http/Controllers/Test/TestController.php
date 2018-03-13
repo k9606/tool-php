@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use AipOcr;
+use Illuminate\Support\Facades\Mail;
 
 class TestController extends Controller
 {
@@ -17,12 +18,32 @@ class TestController extends Controller
 
     public function test()
     {
+//        $flag = Mail::raw('你好，我是PHP程序！',function($message) {
+//            $to ='1457275621@qq.com';
+//            $message->to($to)->subject('纯文本信息邮件测试');
+//        });
+//
+//        if (!$flag) {
+//            echo '发送邮件成功，请查收！';
+//        } else {
+//            echo '发送邮件失败，请重试！';
+//        }
+//
+//        die();
+        $a = [4,5,6];
+        vpd($a);
         $client = new AipOcr(self::APP_ID, self::API_KEY, self::SECRET_KEY);
 
-        $url = "https://login.lvmama.com/captcha/account/checkcode/login_web.htm?secureLevel=primary&_=152065464";
+        $url = "https://login.lvmama.com/captcha/account/checkcode/login_web.htm?" . rand(0, 1000);
 
-        $a = $client->basicGeneralUrl($url);
-        var_dump($a);
+        $image = file_get_contents('example.jpg');
+
+        // 调用通用文字识别（高精度版）
+        $a = $client->basicAccurate($image);
+
+        //$a = $client->basicGeneralUrl($url);
+        return view('test.test', ['images' => $url, 'num' => $a['words_result'][0]['words']]);
+        var_dump($a['words_result'][0]['words']);
 
 
 
