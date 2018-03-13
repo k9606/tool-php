@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Test;
 
+use GatewayClient\Gateway;
 use Goutte\Client;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -18,7 +19,21 @@ class TestController extends Controller
 
     public function test()
     {
-//        $flag = Mail::raw('你好，我是PHP程序！',function($message) {
+        return view('test.test');
+    }
+
+    public function test1()
+    {
+                Gateway::$registerAddress = '10.5.193.116:8282';
+//        Gateway::$registerAddress = '10.5.193.116:8282';
+//        //die();
+        Gateway::sendToUid('0a05c1740b5500000001','ddddddd');
+        die();
+        //Gateway::sendToAll('fff');
+        //return view('test.test');
+
+
+//        $flag = Mail::raw('你好，！',function($message) {
 //            $to ='1457275621@qq.com';
 //            $message->to($to)->subject('纯文本信息邮件测试');
 //        });
