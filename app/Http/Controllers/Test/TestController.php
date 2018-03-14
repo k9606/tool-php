@@ -24,8 +24,8 @@ class TestController extends Controller
 
     public function test1()
     {
-        Gateway::$registerAddress = '10.5.193.116:8282';
-        Gateway::sendToUid('7f0000010b560000000d','ddddddd');
+        $a = [2,4,5];
+        vpd($a);
         die();
         //Gateway::sendToUid('7f0000010b560000000d','ddddddd');
         //Gateway::sendToAll('fff');

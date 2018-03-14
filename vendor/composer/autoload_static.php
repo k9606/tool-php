@@ -21,7 +21,7 @@ class ComposerStaticInitf552daa799ac2a29694936bdf07fc081
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '4e8671d7be9056dcd04ddd9e8e15f9cc' => __DIR__ . '/..' . '/encore/laravel-admin/src/helpers.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
-        'be2dabd89e6571c763d3c521b1c3701e' => __DIR__ . '/../..' . '/app/Helpers.php',
+        '7b4cb74bea61c4973062164acdea6c43' => __DIR__ . '/../..' . '/app/Libraries/Helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -66,7 +66,6 @@ class ComposerStaticInitf552daa799ac2a29694936bdf07fc081
         array (
             'Psy\\' => 4,
             'Psr\\Http\\Message\\' => 17,
-            'Predis\\' => 7,
             'PhpParser\\' => 10,
         ),
         'M' => 
@@ -217,10 +216,6 @@ class ComposerStaticInitf552daa799ac2a29694936bdf07fc081
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
-        'Predis\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/predis/predis/src',
-        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -342,28 +337,12 @@ class ComposerStaticInitf552daa799ac2a29694936bdf07fc081
     );
 
     public static $classMap = array (
-        'AipBase' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/lib/AipBase.php',
-        'AipFace' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipFace.php',
-        'AipHttpClient' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/lib/AipHttpClient.php',
-        'AipHttpUtil' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/lib/AipBCEUtil.php',
-        'AipImageCensor' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipImageCensor.php',
-        'AipImageClassify' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipImageClassify.php',
-        'AipImageSearch' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipImageSearch.php',
-        'AipKg' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipKg.php',
-        'AipNlp' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipNlp.php',
-        'AipOcr' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipOcr.php',
-        'AipSampleSigner' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/lib/AipBCEUtil.php',
-        'AipSignOption' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/lib/AipBCEUtil.php',
-        'AipSpeech' => __DIR__ . '/../..' . '/app/Libraries/aip-php-sdk-2.1.0/AipSpeech.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
-        'GatewayClient\\Context' => __DIR__ . '/../..' . '/app/Libraries/GatewayClient-master/Gateway.php',
-        'GatewayClient\\Gateway' => __DIR__ . '/../..' . '/app/Libraries/GatewayClient-master/Gateway.php',
-        'GatewayClient\\GatewayProtocol' => __DIR__ . '/../..' . '/app/Libraries/GatewayClient-master/Gateway.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',
