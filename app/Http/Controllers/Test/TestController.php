@@ -24,11 +24,10 @@ class TestController extends Controller
 
     public function test1()
     {
-                Gateway::$registerAddress = '10.5.193.116:8282';
-//        Gateway::$registerAddress = '10.5.193.116:8282';
-//        //die();
-        Gateway::sendToUid('0a05c1740b5500000001','ddddddd');
+        Gateway::$registerAddress = '10.5.193.116:8282';
+        Gateway::sendToUid('7f0000010b560000000d','ddddddd');
         die();
+        //Gateway::sendToUid('7f0000010b560000000d','ddddddd');
         //Gateway::sendToAll('fff');
         //return view('test.test');
 
