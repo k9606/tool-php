@@ -20,6 +20,7 @@ Route::get('/vue', function () {
 });
 
 Route::group(['namespace' => 'Test'], function() {
+    Route::resource('/index', 'TestController@index');
     Route::resource('/test', 'TestController@test');
     Route::resource('/test1', 'TestController@test1');
 });

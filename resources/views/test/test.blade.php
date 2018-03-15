@@ -5,30 +5,49 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/js/app.js"></script>
     <title>Document</title>
 </head>
 <body>
 
 </body>
 <script>
-    ws = new WebSocket("ws://10.5.193.116:8282");
-    // 服务端主动推送消息时会触发这里的onmessage
-    ws.onmessage = function(e){
-        //console.log(e.data);
-        //json数据转换成js对象
-        var data = e.data;
-        console.log(e);
-        // var type = data.type || '';
-        // switch(type){
-        //     // Events.php中返回的init类型的消息，将client_id发给后台进行uid绑定
-        //     case 'init':
-        //         // 利用jquery发起ajax请求，将client_id发给后端进行uid绑定
-        //         $.post('./bind.php', {client_id: data.client_id}, function(data){}, 'json');
-        //         break;
-        //     // 当mvc框架调用GatewayClient发消息时直接alert出来
-        //     default :
-        //         console.log(data);
-        // }
-    };
+    $(function(){
+        $.ajax({
+            url:'{{url('/test')}}',
+            data:"",
+            type: "POST",
+            dataType: 'json',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            beforeSend : function () {
+
+            },
+            complete : function () {
+
+            },
+            success : function(data) {
+                var html = "";
+                $.each(data, function(i, item){
+                    html += "<tr product-title='"+ item.title +"+"+ item.tags +"'>\
+							<td class='td-1'>"+ item.id +"</td>\
+							<td>"+ item.title +"</td>\
+							<td class='tbody-tr'>"+ item.type +"</td>\
+							<td>"+ item.destination +"</td>\
+							<td class='tbody-tr'>"+ item.tags +"</td>\
+							<td class='tbody-tr'>"+ item.desc_short +"</td>\
+							<td>"+ item.display +"</td>\
+							<td>"+ item.tags +"</td>\
+							<td>"+ item.category +"</td>\
+							<td><a class='am-btn am-btn-primary bianji' ><i class='am-icon-eyedropper'></i></a></td>\
+					</tr>";
+                });
+                $(".am-table-centered").find("tbody").html(html);
+            }
+        });
+    });
 </script>
 </html>
