@@ -1,22 +1,21 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="/css/app.css">
-    <script src="/js/app.js"></script>
-    <title>Document</title>
-</head>
-<body>
-
-</body>
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>影视名</th>
+                <th>集数</th>
+                <th>来源</th>
+            </tr>
+        </thead>
+        <tbody id="vedio-list">
+        </tbody>
+    </table>
+</div>
 <script>
-    $(function(){
+    $(function() {
         $.ajax({
-            url:'{{url('/test')}}',
+            url:'{{ url('/test') }}',
             data:"",
             type: "POST",
             dataType: 'json',
@@ -30,24 +29,17 @@
 
             },
             success : function(data) {
+                var code = data.dataType;
                 var html = "";
-                $.each(data, function(i, item){
-                    html += "<tr product-title='"+ item.title +"+"+ item.tags +"'>\
-							<td class='td-1'>"+ item.id +"</td>\
-							<td>"+ item.title +"</td>\
-							<td class='tbody-tr'>"+ item.type +"</td>\
-							<td>"+ item.destination +"</td>\
-							<td class='tbody-tr'>"+ item.tags +"</td>\
-							<td class='tbody-tr'>"+ item.desc_short +"</td>\
-							<td>"+ item.display +"</td>\
-							<td>"+ item.tags +"</td>\
-							<td>"+ item.category +"</td>\
-							<td><a class='am-btn am-btn-primary bianji' ><i class='am-icon-eyedropper'></i></a></td>\
-					</tr>";
+                $.each(data.list, function(i, item) {
+                    html += "            <tr>\n" +
+                        "                <td>"+item[0]+"</td>\n" +
+                        "                <td>"+item[1]+"</td>\n" +
+                        "                <td>"+code+"</td>\n" +
+                        "            </tr>";
                 });
-                $(".am-table-centered").find("tbody").html(html);
+                $("#vedio-list").html(html);
             }
         });
     });
 </script>
-</html>

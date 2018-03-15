@@ -10,7 +10,8 @@ Route::group([
     'middleware'    => ['web', 'admin'],
 ], function (Router $router) {
 
-    $router->get('/', 'HomeController@index');
+    $router->get('/1', 'ExampleController@index');
+    $router->get('/2', 'HomeController@index');
     $router->resource('test', TestController::class);
 
 });
