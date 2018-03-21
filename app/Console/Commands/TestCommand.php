@@ -42,20 +42,40 @@ class TestCommand extends Command
     public function handle()
     {
         //
-        $client = new \GuzzleHttp\Client();
-        list($imgArr, $time) = $this->getImageUrl();
-        foreach ($imgArr as $v) {
-            $img = $client->request('get', $v)->getBody()->getContents();
-            Storage::disk('local')->put($this->makeDirAndName($time), $img);
-            echo "$v 下载完成\r\n";
+        $goutteClient = new Client();
+        $guzzleClient = new \GuzzleHttp\Client();
+        for ($page = 1; $page <=5; $page++) {
+            $this->downloadImg($goutteClient, $guzzleClient, $page);
         }
     }
 
-    public function getImageUrl()
+    /**
+     * 图片下载
+     *
+     * @param $goutteClient
+     * @param $guzzleClient
+     * @param $page
+     */
+    public function downloadImg($goutteClient, $guzzleClient, $page)
+    {
+        list($imgArr, $time) = $this->getImageUrl($goutteClient, $page);
+        foreach ($imgArr as $v) {
+            $img = $guzzleClient->request('get', $v)->getBody()->getContents();
+            Storage::disk('local')->put($this->makeDirAndName($time), $img);
+            echo "$v 下载完成\r\n";
+            echo "$page\r\n";
+        }
+    }
+
+    /**
+     * 获取图片地址
+     *
+     * @return array
+     */
+    public function getImageUrl($goutteClient, $page)
     {
         $time = date('Y-m-d', time());
-        $client = new Client();
-        $crawler = $client->request('GET', 'https://www.803ee.com/htm/movielist1/1.htm');
+        $crawler = $goutteClient->request('GET', "https://www.803ee.com/htm/movielist1/$page.htm");
         $url = $crawler->filter('img')->each(function (Crawler $node, $i) {
             $urlList = $node->attr('src');
             return $urlList;
@@ -63,6 +83,12 @@ class TestCommand extends Command
         return [$url, $time];
     }
 
+    /**
+     * 生成目录和文件名
+     *
+     * @param $time
+     * @return string
+     */
     public function makeDirAndName($time)
     {
         $dir = 'you_know';
