@@ -10,7 +10,7 @@ Route::group([
     'middleware'    => ['web', 'admin'],
 ], function (Router $router) {
 
-    $router->get('/ome', 'HomeController@index');
+    $router->get('/Home', 'HomeController@index');
     $router->get('/Example', 'ExampleController@index');
     $router->get('/ajaxGetVideoList', 'TestController@ajaxGetVideoList');
     $router->resource('test', TestController::class);
