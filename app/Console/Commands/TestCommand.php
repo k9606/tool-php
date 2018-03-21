@@ -44,7 +44,7 @@ class TestCommand extends Command
         //
         $goutteClient = new Client();
         $guzzleClient = new \GuzzleHttp\Client();
-        for ($page = 1; $page <=5; $page++) {
+        for ($page = 1; $page <= 2; $page++) {
             $this->downloadImg($goutteClient, $guzzleClient, $page);
         }
     }
@@ -63,8 +63,8 @@ class TestCommand extends Command
             $img = $guzzleClient->request('get', $v)->getBody()->getContents();
             Storage::disk('local')->put($this->makeDirAndName($time), $img);
             echo "$v 下载完成\r\n";
-            echo "$page\r\n";
         }
+        echo "第" . $page . "页下载完成\r\n";
     }
 
     /**
@@ -75,7 +75,7 @@ class TestCommand extends Command
     public function getImageUrl($goutteClient, $page)
     {
         $time = date('Y-m-d', time());
-        $crawler = $goutteClient->request('GET', "https://www.803ee.com/htm/movielist1/$page.htm");
+        $crawler = $goutteClient->request('GET', "https://" . env('WEB_SITE_URL') . "/htm/movielist1/$page.htm");
         $url = $crawler->filter('img')->each(function (Crawler $node, $i) {
             $urlList = $node->attr('src');
             return $urlList;
