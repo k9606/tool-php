@@ -29,10 +29,8 @@ class TestController extends Controller
     public function index()
     {
         return Admin::content(function (Content $content) {
-
-            $content->header('header');
-            $content->description('description');
-
+            $content->header('影视列表');
+            $content->description('美剧');
             $content->body($this->grids());
         });
     }
@@ -41,6 +39,29 @@ class TestController extends Controller
     {
         return view('test.test');
     }
+
+    public function ajaxGetVideoList()
+    {
+        if (Cache::has('teleplay')) {
+            $teleplay['dataType'] = 'cache';
+            $teleplay['list'] = Cache::get('teleplay');
+        } else {
+            $teleplay['dataType'] = 'new';
+            $client = new Client();
+            $crawler = $client->request('GET', 'https://m.80s.tw/movie/12-0-0-0-0-0-0');
+            $teleplayList = $crawler->filter('div.list_mov_title > h4 > a, em');
+            $teleplayArr = [];
+            foreach ($teleplayList as $k => $v) {
+                $teleplayArr[] = $v->nodeValue;
+            }
+            for ($i = 0; $i < ((count($teleplayArr) - 1) / 2); $i++) {
+                $teleplay['list'][] = array_slice($teleplayArr, $i * 2, 2);
+            }
+            Cache::put('teleplay', $teleplay['list'], 60);
+        }
+        return json_encode($teleplay);
+    }
+
     protected function grid()
     {
         $a = Movie::class;
