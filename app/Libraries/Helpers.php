@@ -49,4 +49,15 @@ if (!function_exists('curl_request')) {
         curl_close($ch);
         return $data;
     }
+
+    // 生成随机数(耗资源)
+    if (!function_exists('make_rand_str')) {
+        function make_rand_str()
+        {
+            $str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $randStr = str_shuffle($str);
+            $rands = substr($randStr,0,6);
+            return $rands;
+        }
+    }
 }
