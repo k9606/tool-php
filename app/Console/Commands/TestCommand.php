@@ -22,7 +22,7 @@ class TestCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Teleplay crawler';
 
     /**
      * Create a new command instance.
@@ -40,6 +40,41 @@ class TestCommand extends Command
      * @return mixed
      */
     public function handle()
+    {
+        //
+        $client = new Client();
+        $crawler = $client->request('GET', "http://m.zimuzu.tv/resourcelist?channel=ustv&category=&year=&sort=update");
+
+        // 剧名
+        $teleplayName = $crawler->filter('p.desc > a.aurl');
+        foreach ($teleplayName as $k => $v) {
+            echo $v->textContent;
+            echo "\r\n";
+        }
+
+        // 美剧url
+        $teleplayName = $crawler->filter('p.desc > a.aurl');
+        foreach ($teleplayName as $k => $v) {
+            echo $v->attributes['length']->textContent;
+            echo "\r\n";
+        }
+
+        // 图片
+        $teleplayNameImg = $crawler->filter('div.img-item > a > img');
+        foreach ($teleplayNameImg as $k => $v) {
+            echo $v->attributes['length']->textContent;
+            echo "\r\n";
+        }
+
+        // 评分
+        $teleplayCount = $crawler->filter('span.count');
+        foreach ($teleplayCount as $k => $v) {
+            echo $v->textContent;
+            echo "\r\n";
+        }
+    }
+
+    public function handleYouKnow()
     {
         //
         $goutteClient = new Client();
