@@ -43,35 +43,41 @@ class TestCommand extends Command
     {
         //
         $client = new Client();
-        $crawler = $client->request('GET', "http://m.zimuzu.tv/resourcelist?channel=ustv&category=&year=&sort=update");
+        for ($page = 1; $page <= 1; $page++) {
+            $this->getTeleplayData($client, $page);
+        }
+
+    }
+
+    public function getTeleplayData($client, $page)
+    {
+        $crawler = $client->request('GET', "http://m.zimuzu.tv/resourcelist?channel=ustv&category=&year=&sort=update&page=114");
 
         // 剧名
         $teleplayName = $crawler->filter('p.desc > a.aurl');
-        foreach ($teleplayName as $k => $v) {
-            echo $v->textContent;
-            echo "\r\n";
-        }
-
         // 美剧url
-        $teleplayName = $crawler->filter('p.desc > a.aurl');
-        foreach ($teleplayName as $k => $v) {
-            echo $v->attributes['length']->textContent;
-            echo "\r\n";
-        }
-
+        $teleplayUrl = $crawler->filter('p.desc > a.aurl');
         // 图片
         $teleplayNameImg = $crawler->filter('div.img-item > a > img');
-        foreach ($teleplayNameImg as $k => $v) {
-            echo $v->attributes['length']->textContent;
-            echo "\r\n";
-        }
-
         // 评分
         $teleplayCount = $crawler->filter('span.count');
-        foreach ($teleplayCount as $k => $v) {
-            echo $v->textContent;
-            echo "\r\n";
+
+        $data = [];
+
+        foreach ($teleplayName as $k => $v) {
+            $data[$k][] = $v->textContent;
         }
+        foreach ($teleplayUrl as $k => $v) {
+            $data[$k][] = $v->attributes['length']->textContent;
+        }
+        foreach ($teleplayNameImg as $k => $v) {
+            $data[$k][] = $v->attributes['length']->textContent;
+        }
+        foreach ($teleplayCount as $k => $v) {
+            $data[$k][] = $v->textContent;
+        }
+        
+        var_dump($data);
     }
 
     public function handleYouKnow()
