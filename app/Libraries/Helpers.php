@@ -56,8 +56,16 @@ if (!function_exists('curl_request')) {
         {
             $str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $randStr = str_shuffle($str);
-            $rands = substr($randStr,0,6);
+            $rands = substr($randStr, 0, 6);
             return $rands;
+        }
+    }
+
+    // jsonp返回值
+    if (!function_exists('jsonp_msg')) {
+        function jsonp_msg($code = '-1', $msg = 'error', $data = null)
+        {
+            return response()->json(['code' => $code, 'msg' => $msg, 'data' => $data])->withCallback(request()->input('callback'));
         }
     }
 }
