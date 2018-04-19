@@ -20,5 +20,5 @@ return array(
     '58571171fd5812e6e447dce228f52f4d' => $vendorDir . '/laravel/framework/src/Illuminate/Support/helpers.php',
     '4a1f389d6ce373bda9e57857d3b61c84' => $vendorDir . '/barryvdh/laravel-debugbar/src/helpers.php',
     '4e8671d7be9056dcd04ddd9e8e15f9cc' => $vendorDir . '/encore/laravel-admin/src/helpers.php',
-    '7b4cb74bea61c4973062164acdea6c43' => $baseDir . '/app/Libraries/Helpers.php',
+    'f3036fb5cecdf3dc450df80e28bee807' => $baseDir . '/app/Libraries/helpers.php',
 );

@@ -49,23 +49,38 @@ if (!function_exists('curl_request')) {
         curl_close($ch);
         return $data;
     }
+}
 
-    // 生成随机数(耗资源)
-    if (!function_exists('make_rand_str')) {
-        function make_rand_str()
-        {
-            $str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $randStr = str_shuffle($str);
-            $rands = substr($randStr, 0, 6);
-            return $rands;
-        }
+// 生成随机数 (耗资源)
+if (!function_exists('make_rand_str')) {
+    function make_rand_str()
+    {
+        $str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randStr = str_shuffle($str);
+        $rands = substr($randStr, 0, 6);
+        return $rands;
     }
+}
 
-    // jsonp返回值
-    if (!function_exists('jsonp_msg')) {
-        function jsonp_msg($code = '-1', $msg = 'error', $data = null)
-        {
-            return response()->json(['code' => $code, 'msg' => $msg, 'data' => $data])->withCallback(request()->input('callback'));
+// jsonp返回值
+if (!function_exists('jsonp_msg')) {
+    function jsonp_msg($code = '-1', $msg = 'error', $data = null)
+    {
+        return response()->json(['code' => $code, 'msg' => $msg, 'data' => $data])->withCallback(request()->input('callback'));
+    }
+}
+
+// 二维数组排序
+if (!function_exists('array_sequence')) {
+    function array_sequence($array, $field, $sort = 'SORT_DESC')
+    {
+        $arrSort = [];
+        foreach ($array as $uniqid => $row) {
+            foreach ($row as $key => $value) {
+                $arrSort[$key][$uniqid] = $value;
+            }
         }
+        array_multisort($arrSort[$field], constant($sort), $array);
+        return $array;
     }
 }
