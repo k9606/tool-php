@@ -46,6 +46,7 @@ class TestCommand extends Command
         $guzzleClient = new \GuzzleHttp\Client();
         for ($page = 235160; $page >= 43384; $page--) {
             $this->gett($client, $guzzleClient, $page);
+            // TODO :
         }
 
     }
