@@ -43,10 +43,73 @@ class TestCommand extends Command
     {
         //
         $client = new Client();
-        for ($page = 1; $page <= 1; $page++) {
-            $this->getTeleplayData($client, $page);
+        $guzzleClient = new \GuzzleHttp\Client();
+        for ($page = 235160; $page >= 43384; $page--) {
+            $this->gett($client, $guzzleClient, $page);
         }
 
+    }
+
+    public function gett($client, $guzzleClient, $page)
+    {
+        $time = date('Y-m-d', time());
+        try {
+            $crawler = $client->request('GET', "https://www.740ee.com/htm/pic1/$page.htm");
+            echo "爬第 $page 页  " . date('Y-m-d H:i:s', time()) . "\r\n";
+        } catch (\Exception $e) {
+            echo $e . "\r\n";
+            return;
+        }
+
+        $imgArr = $crawler->filter('img')->each(function (Crawler $node, $i) {
+            $urlList = $node->attr('src');
+            return $urlList;
+        });
+        foreach ($imgArr as $v) {
+            try {
+                if (strpos($v, 'alicdn') !== false) {
+                    echo 'alicdn' . "\r\n";
+                    return;
+                }
+                $img = $guzzleClient->request('get', $v)->getBody()->getContents();
+            } catch (\Exception $e) {
+                echo $e . "\r\n";
+                return;
+            }
+
+            Storage::disk('local')->put($this->makeDirAndName($time), $img);
+            echo "$v 下载完成\r\n";
+        }
+        unset($imgArr);
+        echo "释放内存\r\n";
+        return;
+//        vpd($url);
+//        // 剧名
+//        $teleplayName = $crawler->filter('div.picContent > img');
+//        vpd($teleplayName);
+        // 美剧url
+//        $teleplayUrl = $crawler->filter('p.desc > a.aurl');
+//        // 图片
+//        $teleplayNameImg = $crawler->filter('div.img-item > a > img');
+//        // 评分
+//        $teleplayCount = $crawler->filter('span.count');
+//
+//        $data = [];
+//
+//        foreach ($teleplayName as $k => $v) {
+//            $data[$k][] = $v->textContent;
+//        }
+//        foreach ($teleplayUrl as $k => $v) {
+//            $data[$k][] = $v->attributes['length']->textContent;
+//        }
+//        foreach ($teleplayNameImg as $k => $v) {
+//            $data[$k][] = $v->attributes['length']->textContent;
+//        }
+//        foreach ($teleplayCount as $k => $v) {
+//            $data[$k][] = $v->textContent;
+//        }
+//
+//        var_dump($data);
     }
 
     public function getTeleplayData($client, $page)
