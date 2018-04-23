@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
-        \App\Console\Commands\TestCommand::class
+        \App\Console\Commands\TestCommand::class,
+        \App\Console\Commands\CrawlerDramaAmericanCommand::class
     ];
 
     /**
