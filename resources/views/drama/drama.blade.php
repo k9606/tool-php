@@ -41,7 +41,7 @@
         <section class="sidebar">
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="{{asset('img/user2-160x160.jpg')}}" class="img-circle" alt="头像">
+                    <img src="{{asset('images/user2-160x160.jpg')}}" class="img-circle" alt="头像">
                 </div>
                 <div class="pull-left info">
                     <p>用户名</p>
