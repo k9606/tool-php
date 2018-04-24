@@ -22,6 +22,8 @@ class CrawlerDramaAmericanCommand extends Command
      */
     protected $description = '美剧爬虫';
 
+    protected $imgUrlPrefix = 'http://files.zmzjstu.com/ftp';
+
     /**
      * Create a new command instance.
      *
@@ -42,7 +44,7 @@ class CrawlerDramaAmericanCommand extends Command
         //
         $client = new Client();
 
-        for ($page = 1; $page <= 116; $page++) {
+        for ($page = 1; $page >= 1; $page++) {
             $this->getBaseData($client, $page);
         }
     }
@@ -68,19 +70,27 @@ class CrawlerDramaAmericanCommand extends Command
             $data[$k]['score'] = $v->textContent;
         }
         foreach ($image as $k => $v) {
-            $data[$k]['image'] = $v->attributes['length']->textContent;
+            $data[$k]['image'] = $this->shearImgUrl($v->attributes['length']->textContent);
             $data[$k]['created_at'] = $time;
         }
+        if (!$data) die('爬取完毕');
+
         DB::table('drama')->insert($data);
+        echo '第 ' . $page . ' 页数据已处理' . "\r\n";
 
-        echo '第 ' . $page . ' 页存储完成' . "\r\n";
-
-        return;
+        return sleep(3);
     }
 
     protected function shearCode($url)
     {
         $code = explode('/', $url);
+
+        return end($code);
+    }
+
+    protected function shearImgUrl($url)
+    {
+        $code = explode($this->imgUrlPrefix, $url);
 
         return end($code);
     }
