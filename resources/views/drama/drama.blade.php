@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/AdminLTE.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/carousel.css')}}">
+    <link rel="stylesheet" href="{{asset('css/loading.css')}}">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -49,20 +51,20 @@
                 </div>
             </div>
             <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">菜单</li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-bars"></i> <span>折叠菜单</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> 折叠菜单1</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> 折叠菜单2</a></li>
-                    </ul>
-                </li>
-                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>普通菜单1</span></a></li>
+                {{--<li class="header">折叠菜单</li>--}}
+                {{--<li class="treeview">--}}
+                    {{--<a href="#">--}}
+                        {{--<i class="fa fa-bars"></i> <span>折叠菜单</span>--}}
+                        {{--<span class="pull-right-container">--}}
+              {{--<i class="fa fa-angle-left pull-right"></i>--}}
+            {{--</span>--}}
+                    {{--</a>--}}
+                    {{--<ul class="treeview-menu">--}}
+                        {{--<li><a href="#"><i class="fa fa-circle-o"></i> 折叠菜单1</a></li>--}}
+                        {{--<li><a href="#"><i class="fa fa-circle-o"></i> 折叠菜单2</a></li>--}}
+                    {{--</ul>--}}
+                {{--</li>--}}
+                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>美剧</span></a></li>
                 <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>普通菜单2</span></a></li>
                 <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>普通菜单3</span></a></li>
             </ul>
@@ -85,7 +87,15 @@
         {{--主体头部结束--}}
         {{--主体内容开始--}}
         <section class="content">
-            主内容
+            <div class="marketing">
+                <div id="drama-list" class="row">
+                    <div class="front-loading">
+                        <div class="front-loading-block"></div>
+                        <div class="front-loading-block"></div>
+                        <div class="front-loading-block"></div>
+                    </div>
+                </div>
+            </div>
         </section>
         {{--主体内容结束--}}
     </div>
@@ -98,4 +108,32 @@
 </body>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('js/adminlte.min.js')}}"></script>
+<script>
+    $(function() {
+        $.ajax({
+            url:'{{ url('api/dramalist') }}',
+            dataType: 'json',
+            beforeSend : function () {
+                $(".front-loading").show();
+            },
+            complete : function () {
+                $(".front-loading").hide();
+            },
+            success : function(data) {
+                var html = "";
+                $.each(data, function(i, item) {
+                    html +=
+                        "<div class=\"col-xs-6 col-lg-2\">\n" +
+                        "<img class=\"img-rounded\" src="+item['image']+" alt=\"Generic placeholder image\">\n" +
+                        "<h4>"+item['name']+"</h4>\n" +
+                        // "<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>\n" +
+                        "<p><a class=\"btn btn-default\" href=\"#\" role=\"button\">View details &raquo;</a></p>\n" +
+                        "</div>";
+                });
+
+                $("#drama-list").html(html);
+            }
+        });
+    });
+</script>
 </html>
