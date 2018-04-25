@@ -97,6 +97,10 @@ body {
     height: 211px;
 }
 
+.modal-content {
+    border-radius: 6px;
+}
+
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */

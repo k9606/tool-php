@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>knskzs</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/AdminLTE.min.css')}}">
@@ -47,7 +47,7 @@
                 </div>
                 <div class="pull-left info">
                     <p>用户名</p>
-                    <a href="#"><i class="fa fa-circle text-success"></i>状态</a>
+                    <a href="#"><i class="fa fa-circle text-success"></i> 登录</a>
                 </div>
             </div>
             <ul class="sidebar-menu" data-widget="tree">
@@ -87,6 +87,26 @@
         {{--主体头部结束--}}
         {{--主体内容开始--}}
         <section class="content">
+
+            <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        {{--<div class="modal-header">--}}
+                            {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--}}
+                            {{--<h4 class="modal-title" id="myModalLabel">选择集数</h4>--}}
+                        {{--</div>--}}
+                        <div class="modal-body">
+                            第一季第1集  第二季第2集  第三季第3集<br/>
+                            第一季第1集  第二季第2集  第三季第3集<br/>
+                            第一季第1集  第二季第2集  第三季第3集<br/>
+                        </div>
+                        {{--<div class="modal-footer">--}}
+                            {{--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>--}}
+                        {{--</div>--}}
+                    </div>
+                </div>
+            </div>
+
             <div class="marketing">
                 <div id="drama-list" class="row">
                     <div class="front-loading">
@@ -96,6 +116,7 @@
                     </div>
                 </div>
             </div>
+
         </section>
         {{--主体内容结束--}}
     </div>
@@ -127,7 +148,7 @@
                         "<img class=\"img-rounded\" src="+item['image']+" alt=\"Generic placeholder image\">\n" +
                         "<h4>"+item['name']+"</h4>\n" +
                         // "<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>\n" +
-                        "<p><a class=\"btn btn-default\" href=\"#\" role=\"button\">View details &raquo;</a></p>\n" +
+                        "<p><a class=\"btn btn-default btn-sm\" href=\"#\" role=\"button\" data-toggle=\"modal\" data-target=\"#myModal\">下 载 &raquo;</a></p>\n" +
                         "</div>";
                 });
 

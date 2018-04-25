@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Test;
 
+use GatewayClient\Gateway;
 use Goutte\Client;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -13,7 +14,10 @@ class TestController extends Controller
 {
     //
     public function index() {
-        return view('test.test');
+
+        Gateway::$registerAddress = '192.168.0.144:8282';
+        Gateway::sendToAll('jj');
+        //Gateway::sendToAll('fvf');
     }
 
     public function test()

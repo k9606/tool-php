@@ -12,12 +12,12 @@
 */
 
 Route::get('/', function () {
-//    return view('welcome');
-    return view('drama.drama');
+    return view('welcome');
+//    return view('drama.drama');
 });
 
 Route::group(['namespace' => 'Test'], function() {
     Route::resource('/index', 'TestController@index');
-    Route::resource('/test', 'TestController@test');
+
     Route::resource('/test1', 'TestController@test1');
 });

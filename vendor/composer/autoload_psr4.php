@@ -39,6 +39,7 @@ return array(
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'Goutte\\' => array($vendorDir . '/fabpot/goutte/Goutte'),
+    'GatewayClient\\' => array($vendorDir . '/workerman/gatewayclient'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
     'Encore\\Admin\\' => array($vendorDir . '/encore/laravel-admin/src'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
