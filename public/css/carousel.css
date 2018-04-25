@@ -97,10 +97,12 @@ body {
     height: 211px;
 }
 
-.modal-content {
-    border-radius: 6px;
+/*.modal-content {*/
+    /*border-radius: 6px;*/
+/*}*/
+.my-collect {
+    padding-bottom: 6px;
 }
-
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */

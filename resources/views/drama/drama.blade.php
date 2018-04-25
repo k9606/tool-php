@@ -64,8 +64,7 @@
                         {{--<li><a href="#"><i class="fa fa-circle-o"></i> 折叠菜单2</a></li>--}}
                     {{--</ul>--}}
                 {{--</li>--}}
-                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>美剧</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>普通菜单2</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span> 美剧</span></a></li>
                 <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>普通菜单3</span></a></li>
             </ul>
         </section>
@@ -90,19 +89,67 @@
 
             <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        {{--<div class="modal-header">--}}
-                            {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--}}
-                            {{--<h4 class="modal-title" id="myModalLabel">选择集数</h4>--}}
-                        {{--</div>--}}
-                        <div class="modal-body">
-                            第一季第1集  第二季第2集  第三季第3集<br/>
-                            第一季第1集  第二季第2集  第三季第3集<br/>
-                            第一季第1集  第二季第2集  第三季第3集<br/>
+                    <div class="panel panel-primary">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">行尸走肉 ed2k</div>
+                        <div class="panel-body">
+                            <div class="my-collect">
+                                <button type="button" class="btn btn-default" disabled="disabled"><i class="fa fa-file-video-o" aria-hidden="true"></i> 第三季</button>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第01集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第02集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第03集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第04集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第05集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第06集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第07集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第08集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第09集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第10集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第11集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第12集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第13集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第14集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第15集</button>
+                            </div>
+                            <div class="my-collect">
+                                <button type="button" class="btn btn-default" disabled="disabled"><i class="fa fa-file-video-o" aria-hidden="true"></i> 第二季</button>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第01集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第02集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第03集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第04集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第05集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第06集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第07集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第08集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第09集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第10集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第11集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第12集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第13集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第14集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第15集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第16集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第17集</button>
+                            </div>
+                            <div class="my-collect">
+                                <button type="button" class="btn btn-default" disabled="disabled"><i class="fa fa-file-video-o" aria-hidden="true"></i> 第一季</button>
+                            </div>
+                            <div class="row">
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第01集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第02集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第03集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第04集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第05集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第06集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第07集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第08集</button>
+                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1">第09集</button>
+                            </div>
                         </div>
-                        {{--<div class="modal-footer">--}}
-                            {{--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>--}}
-                        {{--</div>--}}
                     </div>
                 </div>
             </div>
@@ -144,14 +191,14 @@
                 var html = "";
                 $.each(data, function(i, item) {
                     html +=
-                        "<div class=\"col-xs-6 col-lg-2\">\n" +
+                        "<div class=\"col-xs-6 col-sm-4 col-md-3 col-lg-2\">\n" +
                         "<img class=\"img-rounded\" src="+item['image']+" alt=\"Generic placeholder image\">\n" +
                         "<h4>"+item['name']+"</h4>\n" +
                         // "<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>\n" +
-                        "<p><a class=\"btn btn-default btn-sm\" href=\"#\" role=\"button\" data-toggle=\"modal\" data-target=\"#myModal\">下 载 &raquo;</a></p>\n" +
+                        "<p><a class=\"btn btn-default btn-sm\" href=\"#\" role=\"button\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></i></a></p>\n" +
                         "</div>";
                 });
-
+                // glyphicon glyphicon-plus
                 $("#drama-list").html(html);
             }
         });
