@@ -44,9 +44,45 @@ class CrawlerDramaAmericanCommand extends Command
         //
         $client = new Client();
 
-        for ($page = 1; $page >= 1; $page++) {
-            $this->getBaseData($client, $page);
+//        for ($page = 1; $page >= 1; $page++) {
+//            $this->getBaseData($client, $page);
+//        }
+        $this->getDramaCode($client);
+    }
+
+    protected function getDramaCode($client)
+    {
+        $code = DB::table('drama')->select('code')->limit(1)->get();
+        vpd($code);
+        $crawler = $client->request('GET', "http://m.zimuzu.tv/resource/item?rid=" . $code . "&season=1&episode=1");
+        $a = $crawler->filter('a.mui-navigate-right');
+        $list = [];
+        foreach ($a as $k => $v) {
+            $list[] = $v->textContent;
         }
+
+        foreach ($list as $k => $v) {
+            if (mb_strpos($v, 'MP4') !== false && mb_strpos($v, '中文') !== false ) {
+                $this->getEd2kLink($crawler, $k);
+            }
+        }
+
+    }
+
+    protected function getEd2kLink($crawler, $num)
+    {
+        $a = $crawler->filter('li.mui-col-xs-6.aurl > a');
+        $links = [];
+        foreach ($a as $k => $v) {
+            $links[] = $v->attributes['length']->textContent;
+        }
+
+        foreach ($links as $k =>$v) {
+            if (mb_strpos($v, 'ed2k://') !== false) {
+                $linkss[] = $v;//$links[$k][$v];
+            }
+        }
+        vpd($linkss[$num]);
     }
 
     protected function getBaseData($client, $page)
