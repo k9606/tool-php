@@ -13,7 +13,7 @@ class CrawlerDramaAmericanCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'ustv:crawl';
+    protected $signature = 'ustv:crawl {type}';
 
     /**
      * The console command description.
@@ -44,16 +44,24 @@ class CrawlerDramaAmericanCommand extends Command
         //
         $client = new Client();
 
-//        for ($page = 1; $page >= 1; $page++) {
-//            $this->getBaseData($client, $page);
-//        }
-        $this->getDramaCode($client);
+        switch ($this->argument('type')) {
+            case 'getAll':
+                for ($page = 1; $page >= 1; $page++) {
+                    $this->getBaseData($client, $page);
+                }
+                break;
+            case 'getEd2k':
+                $this->getDramaCode($client);
+                break;
+            default:
+                break;
+        }
     }
 
     protected function getDramaCode($client)
     {
         $code = DB::table('drama')->select('code')->limit(1)->get();
-        vpd($code);
+        $code = 11088;
         $crawler = $client->request('GET', "http://m.zimuzu.tv/resource/item?rid=" . $code . "&season=1&episode=1");
         $a = $crawler->filter('a.mui-navigate-right');
         $list = [];
@@ -82,7 +90,9 @@ class CrawlerDramaAmericanCommand extends Command
                 $linkss[] = $v;//$links[$k][$v];
             }
         }
-        vpd($linkss[$num]);
+        $a = explode('.mp4', $linkss[$num]);
+        $newEd2k = 'ed2k://|file|国土安全[knskzs.com].mp4' . $a[1];
+        vpd($newEd2k);
     }
 
     protected function getBaseData($client, $page)
