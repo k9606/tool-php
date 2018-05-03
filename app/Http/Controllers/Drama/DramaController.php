@@ -19,4 +19,18 @@ class DramaController extends Controller
         }
         return json_encode($list);
     }
+
+    public function dramaLink(Request $request)
+    {
+        $dramaId = $request->input('drama_id');
+        if (is_numeric($dramaId)) {
+            return json_msg();
+        }
+        $dramaId = 15;
+        $list = DB::table('drama_link')->select('season', 'episode', 'link')->where('drama_id', $dramaId)->get();
+        foreach ($list as $v) {
+            $arr['s'] = $v->season;
+        }
+        //return json_msg(200, '请求成功', $list);
+    }
 }

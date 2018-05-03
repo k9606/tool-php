@@ -89,69 +89,9 @@
         <section class="content">
             <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
-                    <div class="panel panel-primary">
+                    <div id="drama-link" class="panel panel-primary">
                         <!-- Default panel contents -->
-                        <div class="panel-heading">行尸走肉 ed2k
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        </div>
-                        <div class="panel-body">
-                            <div class="my-collect">
-                                <button type="button" class="btn btn-default" disabled="disabled"><i class="fa fa-file-video-o" aria-hidden="true"></i> 第三季</button>
-                            </div>
-                            <div class="row">
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第01集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第02集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第03集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第04集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第05集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第06集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第07集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第08集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第09集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第10集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第11集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第12集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第13集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第14集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第15集</button>
-                            </div>
-                            <div class="my-collect">
-                                <button type="button" class="btn btn-default" disabled="disabled"><i class="fa fa-file-video-o" aria-hidden="true"></i> 第二季</button>
-                            </div>
-                            <div class="row">
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第01集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第02集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第03集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第04集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第05集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第06集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第07集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第08集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第09集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第10集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第11集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第12集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第13集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第14集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第15集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第16集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第17集</button>
-                            </div>
-                            <div class="my-collect">
-                                <button type="button" class="btn btn-default" disabled="disabled"><i class="fa fa-file-video-o" aria-hidden="true"></i> 第一季</button>
-                            </div>
-                            <div class="row">
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第01集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第02集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第03集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第04集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第05集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第06集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第07集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第08集</button>
-                                <button type="button" class="btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close" data-dismiss="modal" aria-label="Close" data-toggle="modal" data-target=".bs-example-modal-sm">第09集</button>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -205,16 +145,46 @@
                         "<p><a class=\"btn btn-default btn-sm\" href=\"#\" role=\"button\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></i></a></p>\n" +
                         "</div>";
                 });
-                // glyphicon glyphicon-plus
                 $("#drama-list").html(html);
             }
         });
     });
 
     $('.time-close').click(function() {
-        setTimeout(function() {
-            $("#myModall").modal("hide")
-        }, 1000);
-    })
+        $.ajax({
+            url:'{{ url('api/dramalink') }}',
+            dataType: 'json',
+            beforeSend : function () {
+                $(".front-loading").show();
+            },
+            complete : function () {
+                $(".front-loading").hide();
+            },
+            success : function(data) {
+                var html = "<div class=\"panel-heading\">行尸走肉 ed2k\n" +
+                    "                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"panel-body\">\n" +
+                    "                            <div class=\"my-collect\">\n" +
+                    "                                <button type=\"button\" class=\"btn btn-default\" disabled=\"disabled\"><i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i> 第三季</button>\n" +
+                    "                            </div>\n" +
+                    "                            <div class=\"row\">\n" +
+                    "                                <button type=\"button\" class=\"btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close\" data-dismiss=\"modal\" aria-label=\"Close\" data-toggle=\"modal\" data-target=\".bs-example-modal-sm\">第01集</button>\n" +
+                    "                            </div>\n" +
+                    "                        </div>";
+                $.each(data, function(i, item) {
+                    html += "";
+                });
+                $("#drama-link").html(html);
+            }
+        });
+        // setTimeout(function() {
+        //     $("#myModall").modal("hide")
+        // }, 1000);
+    });
+
+    $('.downlink').click(function () {
+        alert(3);
+    });
 </script>
 </html>

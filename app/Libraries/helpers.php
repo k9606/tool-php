@@ -62,11 +62,19 @@ if (!function_exists('make_rand_str')) {
     }
 }
 
-// jsonp返回值
+// jsonp 响应
 if (!function_exists('jsonp_msg')) {
     function jsonp_msg($code = '-1', $msg = 'error', $data = null)
     {
         return response()->json(['code' => $code, 'msg' => $msg, 'data' => $data])->withCallback(request()->input('callback'));
+    }
+}
+
+// json 响应
+if (!function_exists('json_msg')) {
+    function json_msg($code = '-1', $msg = 'error', $data = null)
+    {
+        return response()->json(['code' => $code, 'msg' => $msg, 'data' => $data]);
     }
 }
 
