@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
-class DramaController extends Controller
+class IndexController extends Controller
 {
     //
     public function dramaList()

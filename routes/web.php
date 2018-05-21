@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('drama.drama');
+    return view('drama.index');
 });
