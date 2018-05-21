@@ -16,12 +16,3 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
-
-Route::group(['namespace' => 'Test'], function() {
-    Route::resource('/test', 'TestController@index');
-});
-
-Route::group(['namespace' => 'Drama'], function() {
-    Route::resource('/dramalist', 'DramaController@dramaList');
-    Route::resource('/dramalink', 'DramaController@dramaLink');
-});

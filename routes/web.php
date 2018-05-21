@@ -14,7 +14,3 @@
 Route::get('/', function () {
     return view('drama.drama');
 });
-
-Route::group(['namespace' => 'Test'], function() {
-    Route::resource('/index', 'TestController@index');
-});

@@ -12,9 +12,5 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
     $router->get('/Example', 'ExampleController@index');
-    $router->get('/ajaxGetVideoList', 'TestController@ajaxGetVideoList');
-    $router->resource('test', TestController::class);
-    $router->resource('drama', DramaController::class);
-    $router->get('/ajaxGetDramaList', 'DramaController@ajaxGetDramaList');
 
 });

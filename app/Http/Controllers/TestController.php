@@ -1,32 +1,62 @@
 <?php
 
-namespace App\Admin\Controllers;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Movie;
-use Encore\Admin\Facades\Admin;
-use Encore\Admin\Form;
-use Encore\Admin\Grid;
-use Encore\Admin\Layout\Column;
-use Encore\Admin\Layout\Content;
-use Encore\Admin\Layout\Row;
-use Encore\Admin\Widgets\Box;
-use Encore\Admin\Widgets\Chart\Bar;
-use Encore\Admin\Widgets\Chart\Doughnut;
-use Encore\Admin\Widgets\Chart\Line;
-use Encore\Admin\Widgets\Chart\Pie;
-use Encore\Admin\Widgets\Chart\PolarArea;
-use Encore\Admin\Widgets\Chart\Radar;
-use Encore\Admin\Widgets\Collapse;
-use Encore\Admin\Widgets\InfoBox;
-use Encore\Admin\Widgets\Tab;
-use Encore\Admin\Widgets\Table;
+use GatewayClient\Gateway;
 use Goutte\Client;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Mail;
 
 class TestController extends Controller
 {
-    public function index()
+    //
+    public function index() {
+
+        Gateway::$registerAddress = '192.168.0.144:8282';
+        Gateway::sendToAll('jj');
+        //Gateway::sendToAll('fvf');
+    }
+
+    public function test()
+    {
+        if (Cache::has('teleplay')) {
+            $teleplay['dataType'] = 'cache';
+            $teleplay['list'] = Cache::get('teleplay');
+        } else {
+            $teleplay['dataType'] = 'new';
+            $client = new Client();
+            $crawler = $client->request('GET', 'https://m.80s.tw/movie/12-0-0-0-0-0-0');
+            $teleplayList = $crawler->filter('div.list_mov_title > h4 > a, em');
+            $teleplayArr = [];
+            foreach ($teleplayList as $k => $v) {
+                $teleplayArr[] = $v->nodeValue;
+            }
+            for ($i = 0; $i < ((count($teleplayArr) - 1) / 2); $i++) {
+                $teleplay['list'][] = array_slice($teleplayArr, $i * 2, 2);
+            }
+            Cache::put('teleplay', $teleplay['list'], 60);
+        }
+        return json_encode($teleplay);
+    }
+
+    public function sendMail()
+    {
+        $flag = Mail::raw('你好，！',function($message) {
+            $to ='1457275621@qq.com';
+            $message->to($to)->subject('纯文rrr本信息邮件测试');
+        });
+
+        if (!$flag) {
+            echo '邮件发送成功';
+        } else {
+            echo '邮件发送失败';
+        }
+    }
+
+    public function index2()
     {
         return Admin::content(function (Content $content) {
             $content->header('影视列表');
@@ -116,4 +146,5 @@ class TestController extends Controller
             $content->row((new Box('Table', new Table($headers, $teleplay['list'])))->style('info')->solid());
         });
     }
+
 }

@@ -6,7 +6,7 @@ use Goutte\Client;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
-class CrawlerDramaAmericanCommand extends Command
+class CrawlerDramaCommand extends Command
 {
     /**
      * The name and signature of the console command.
