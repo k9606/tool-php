@@ -13,14 +13,14 @@ class CrawlerDramaCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'crawl:ustv {type}';
+    protected $signature = 'crawl:drama {type}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '美剧爬虫';
+    protected $description = '电视剧爬虫';
 
     /**
      * 图片前缀
@@ -51,22 +51,26 @@ class CrawlerDramaCommand extends Command
 
         switch ($this->argument('type')) {
             case 'init':
-                $this->handleBaseData($client);
+                $this->baseData($client);
                 break;
             case 'link':
-                $this->handleDownloadLink($client);
+                $this->downloadLink($client);
                 break;
             default:
                 break;
         }
     }
 
-    protected function handleBaseData($client)
+    /**
+     * 基础数据模块
+     *
+     * @param $client
+     */
+    protected function baseData($client)
     {
-        for ($page = 1; $page >= 1; $page ++) {
+        for ($page = 1; $page >= 1; $page++) {
             $crawler = $client->request('GET', "http://m.zimuzu.tv/resourcelist?channel=ustv&category=&year=&sort=update
             &page=$page");
-
             $this->getBaseData($crawler, $page);
 
             unset($crawler);
@@ -75,22 +79,20 @@ class CrawlerDramaCommand extends Command
         return;
     }
 
+    /**
+     * 获取基础数据
+     *
+     * @param $crawler
+     * @param $page
+     */
     protected function getBaseData($crawler, $page)
     {
-        $name = $crawler->filter('p.desc > a.aurl');
-        $code = $crawler->filter('p.desc > a.aurl');
-        $score = $crawler->filter('span.count');
+        $nameOrCode = $crawler->filter('p.desc > a.aurl');
         $image = $crawler->filter('div.img-item > a > img');
         $time = date('Y-m-d H:i:s', time());
-
-        foreach ($name as $k => $v) {
+        foreach ($nameOrCode as $k => $v) {
             $data[$k]['name'] = $v->textContent;
-        }
-        foreach ($code as $k => $v) {
             $data[$k]['code'] = $this->shearCode($v->attributes['length']->textContent);
-        }
-        foreach ($score as $k => $v) {
-            $data[$k]['score'] = $v->textContent;
         }
         foreach ($image as $k => $v) {
             $data[$k]['image'] = $this->shearImgUrl($v->attributes['length']->textContent);
@@ -103,6 +105,39 @@ class CrawlerDramaCommand extends Command
         return;
     }
 
+    /**
+     * 截取剧集代码
+     *
+     * @param $url
+     * @return mixed
+     */
+    protected function shearCode($url)
+    {
+        $url = explode('/', $url);
+
+        return end($url);
+    }
+
+    /**
+     * 截取图片路径
+     *
+     * @param $url
+     * @return mixed
+     */
+    protected function shearImgUrl($url)
+    {
+        $url = explode($this->imgUrlPrefix, $url);
+
+        return end($url);
+    }
+
+    /**
+     * 保存基础数据
+     *
+     * @param $data
+     * @param $page
+     * @return int
+     */
     protected function saveBaseData($data, $page)
     {
         DB::table('drama')->insert($data);
@@ -111,42 +146,36 @@ class CrawlerDramaCommand extends Command
         return sleep(3);
     }
 
-    protected function shearCode($url)
+    /**
+     * 下载链接模块
+     *
+     * @param $client
+     */
+    protected function downloadLink($client)
     {
-        $url = explode('/', $url);
-
-        return end($url);
-    }
-
-    protected function shearImgUrl($url)
-    {
-        $url = explode($this->imgUrlPrefix, $url);
-
-        return end($url);
-    }
-
-    public function handleDownloadLink($client)
-    {
-        $dramaList = DB::table('drama')->select('id', 'name', 'code')->get();
-
-        foreach ($dramaList as $v) {
-            $this->getAloneUrl($client, $v);
+        $list = DB::table('drama')->select('id', 'name', 'code')->get();
+        foreach ($list as $v) {
+            $this->makeDetailUrl($client, $v);
         }
     }
 
-    protected function getAloneUrl($client, $dramaData)
+    /**
+     * 生成详情url
+     *
+     * @param $client
+     * @param $dramaData
+     */
+    protected function makeDetailUrl($client, $dramaData)
     {
-        for ($season = 1; $season >=1; $season ++) {
-            for ($episode = 1; $episode >=1; $episode ++) {
+        for ($season = 1; $season >= 1; $season++) {
+            for ($episode = 1; $episode >= 1; $episode++) {
                 $url = "http://m.zimuzu.tv/resource/item?rid=$dramaData->code&season=$season&episode=$episode";
-
                 $crawler = $client->request('GET', $url);
 
                 $dramaData->season = $season;
                 $dramaData->episode = $episode;
 
-                $link = $this->handleAloneUrl($crawler, $dramaData);
-
+                $link = $this->checkNeedType($crawler, $dramaData);
                 if (!$link && $episode == 1) return;
                 if (!$link) break;
                 echo $url . "\r\n";
@@ -156,22 +185,27 @@ class CrawlerDramaCommand extends Command
         }
     }
 
-    protected function handleAloneUrl($crawler, $dramaData)
+    /**
+     * 检测需要的类型
+     *
+     * @param $crawler
+     * @param $dramaData
+     * @return array|bool
+     */
+    protected function checkNeedType($crawler, $dramaData)
     {
         $type = $crawler->filter('a.mui-navigate-right');
-
         $typeList = [];
         foreach ($type as $v) {
             $typeList[] = $v->textContent;
         }
         if (!$typeList) return false;
-
-        $link = [];
+        $link = []; // TODO : 去掉一个 & sleep3
         foreach ($typeList as $k => $v) {
             if (mb_strpos($v, 'MP4') !== false && mb_strpos($v, '中文') !== false) {
-                $link[] = $this->getDownloadLink($crawler, $dramaData, $k);
+                $link[] = $this->getLink($crawler, $dramaData, $k);
             } elseif (mb_strpos($v, 'HR-HDTV') !== false && mb_strpos($v, '中文') !== false) {
-                $link[] = $this->getDownloadLink($crawler, $dramaData, $k);
+                $link[] = $this->getLink($crawler, $dramaData, $k);
             }
         }
         if (!$link) return false;
@@ -179,10 +213,17 @@ class CrawlerDramaCommand extends Command
         return $link;
     }
 
-    protected function getDownloadLink($crawler, $dramaData, $digit)
+    /**
+     * 获取下载链接
+     *
+     * @param $crawler
+     * @param $dramaData
+     * @param $num
+     * @return bool
+     */
+    protected function getLink($crawler, $dramaData, $num)
     {
         $link = $crawler->filter('li.mui-col-xs-6.aurl > a');
-
         foreach ($link as $v) {
             $linkArr[] = $v->attributes['length']->textContent;
         }
@@ -194,23 +235,35 @@ class CrawlerDramaCommand extends Command
             }
         }
 
-        return $this->renameDownloadLink($dramaData, $links[$digit]);
+        return $this->renameLink($dramaData, $links[$num]);
     }
 
-    protected function renameDownloadLink($dramaData, $link)
+    /**
+     * 重命名链接
+     *
+     * @param $dramaData
+     * @param $link
+     * @return mixed
+     */
+    protected function renameLink($dramaData, $link)
     {
         $linkArr = explode('.mp4', $link);
-
         $newlink = 'ed2k://|file|'
             . $dramaData->name . '[第' . $dramaData->season . '季第' . $dramaData->episode . '集][knskzs.com].mp4'
             . $linkArr[1];
-
-        $this->saveDownloadLink($dramaData, $newlink);
+        $this->saveLink($dramaData, $newlink);
 
         return $link;
     }
 
-    protected function saveDownloadLink($dramaData, $newlink)
+    /**
+     * 保存链接
+     *
+     * @param $dramaData
+     * @param $newlink
+     * @return int
+     */
+    protected function saveLink($dramaData, $newlink)
     {
         DB::table('drama_link')->insert([
             'drama_id' => $dramaData->id,
@@ -221,6 +274,6 @@ class CrawlerDramaCommand extends Command
         ]);
         echo $dramaData->name . '第 ' . $dramaData->season . ' 季第 ' . $dramaData->episode . ' 集链接已处理' . "\r\n";
 
-        return sleep(3);
+        return;// sleep(3);
     }
 }

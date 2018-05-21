@@ -51,19 +51,6 @@
                 </div>
             </div>
             <ul class="sidebar-menu" data-widget="tree">
-                {{--<li class="header">折叠菜单</li>--}}
-                {{--<li class="treeview">--}}
-                    {{--<a href="#">--}}
-                        {{--<i class="fa fa-bars"></i> <span>折叠菜单</span>--}}
-                        {{--<span class="pull-right-container">--}}
-              {{--<i class="fa fa-angle-left pull-right"></i>--}}
-            {{--</span>--}}
-                    {{--</a>--}}
-                    {{--<ul class="treeview-menu">--}}
-                        {{--<li><a href="#"><i class="fa fa-circle-o"></i> 折叠菜单1</a></li>--}}
-                        {{--<li><a href="#"><i class="fa fa-circle-o"></i> 折叠菜单2</a></li>--}}
-                    {{--</ul>--}}
-                {{--</li>--}}
                 <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span> 美剧</span></a></li>
                 <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>普通菜单2</span></a></li>
                 <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>普通菜单3</span></a></li>
@@ -85,6 +72,7 @@
             </ol>
         </section>
         {{--主体头部结束--}}
+
         {{--主体内容开始--}}
         <section class="content">
             <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
