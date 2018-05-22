@@ -203,9 +203,12 @@ class CrawlerDramaCommand extends Command
         $link = []; // TODO : 去掉一个 & sleep3
         foreach ($typeList as $k => $v) {
             if (mb_strpos($v, 'MP4') !== false && mb_strpos($v, '中文') !== false) {
-                $link[] = $this->getLink($crawler, $dramaData, $k);
-            } elseif (mb_strpos($v, 'HR-HDTV') !== false && mb_strpos($v, '中文') !== false) {
-                $link[] = $this->getLink($crawler, $dramaData, $k);
+                $link[] = $this->getLink($crawler, $dramaData, $k, 'mp4');
+            }
+            if (!$link) {
+                if (mb_strpos($v, 'HR-HDTV') !== false && mb_strpos($v, '中文') !== false) {
+                    $link[] = $this->getLink($crawler, $dramaData, $k, 'mkv');
+                }
             }
         }
         if (!$link) return false;
@@ -221,7 +224,7 @@ class CrawlerDramaCommand extends Command
      * @param $num
      * @return bool
      */
-    protected function getLink($crawler, $dramaData, $num)
+    protected function getLink($crawler, $dramaData, $num, $vedioType)
     {
         $link = $crawler->filter('li.mui-col-xs-6.aurl > a');
         foreach ($link as $v) {
@@ -235,7 +238,7 @@ class CrawlerDramaCommand extends Command
             }
         }
 
-        return $this->renameLink($dramaData, $links[$num]);
+        return $this->renameLink($dramaData, $links[$num], $vedioType);
     }
 
     /**
@@ -245,9 +248,15 @@ class CrawlerDramaCommand extends Command
      * @param $link
      * @return mixed
      */
-    protected function renameLink($dramaData, $link)
+    protected function renameLink($dramaData, $link, $vedioType)
     {
-        $linkArr = explode('.mp4', $link);
+        if ($vedioType == 'mp4') {
+            $linkArr = explode('.mp4', $link);
+        } elseif ($vedioType == 'mkv') {
+            $linkArr = explode('.mkv', $link);
+            if (!isset($linkArr[1])) $linkArr = explode('.mp4', $link);
+        }
+
         $newlink = 'ed2k://|file|'
             . $dramaData->name . '[第' . $dramaData->season . '季第' . $dramaData->episode . '集][knskzs.com].mp4'
             . $linkArr[1];
@@ -274,6 +283,6 @@ class CrawlerDramaCommand extends Command
         ]);
         echo $dramaData->name . '第 ' . $dramaData->season . ' 季第 ' . $dramaData->episode . ' 集链接已处理' . "\r\n";
 
-        return;// sleep(3);
+        return sleep(3);
     }
 }
