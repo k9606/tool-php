@@ -258,7 +258,8 @@ class CrawlerDramaCommand extends Command
         }
 
         $newlink = 'ed2k://|file|'
-            . $dramaData->name . '[第' . $dramaData->season . '季第' . $dramaData->episode . '集][knskzs.com].mp4'
+            . $dramaData->name . '[第' . $dramaData->season . '季第' . $dramaData->episode . '集][knskzs.com].'
+            . $vedioType
             . $linkArr[1];
         $this->saveLink($dramaData, $newlink);
 
@@ -283,6 +284,6 @@ class CrawlerDramaCommand extends Command
         ]);
         echo $dramaData->name . '第 ' . $dramaData->season . ' 季第 ' . $dramaData->episode . ' 集链接已处理' . "\r\n";
 
-        return sleep(3);
+        return;// sleep(3);
     }
 }
