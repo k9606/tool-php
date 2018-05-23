@@ -284,6 +284,6 @@ class CrawlerDramaCommand extends Command
         ]);
         echo $dramaData->name . '第 ' . $dramaData->season . ' 季第 ' . $dramaData->episode . ' 集链接已处理' . "\r\n";
 
-        return;// sleep(3);
+        return sleep(3);
     }
 }
