@@ -11,11 +11,17 @@ $http->set(
     [
         'enable_static_handler' => true,
         'document_root' => "/var/www/html/tool-laravel/resources/views/live",
+        'worker_num' => 5
     ]
 );
-$http->on('request', function($request, $response) {
+
+$http->on('WorkerStart', function () {
+    require_once __DIR__.'/../bootstrap/app.php';
+});
+
+$http->on('request', function ($request, $response) {
     $response->cookie("singwa", "xsssss", time() + 1800);
-    $response->end("sss". json_encode($request->get));
+    $response->end("sss" . json_encode($request->get));
 });
 
 $http->start();
