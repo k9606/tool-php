@@ -16,7 +16,7 @@ $http->set(
 );
 
 $http->on('WorkerStart', function () {
-    require_once __DIR__.'/../bootstrap/app.php';
+    require_once __DIR__.'/../../bootstrap/app.php';
 });
 
 $http->on('request', function ($request, $response) {
