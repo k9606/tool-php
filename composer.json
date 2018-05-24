@@ -11,7 +11,8 @@
         "barryvdh/laravel-debugbar": "~2.4",
         "fabpot/goutte": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.4",
-        "workerman/gatewayclient": "^3.0"
+        "workerman/gatewayclient": "^3.0",
+        "hhxsv5/laravel-s": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
