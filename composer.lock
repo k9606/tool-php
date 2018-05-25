@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "9f40374f1864130d60355c294db7fc4f",
+    "content-hash": "52424b80eafd55c951f1e8129cd1f6aa",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -626,68 +626,6 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
-        },
-        {
-            "name": "hhxsv5/laravel-s",
-            "version": "v1.11.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hhxsv5/laravel-s.git",
-                "reference": "eee5ca0b19a0735e51e2fc6d5f4028f833afa056"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/hhxsv5/laravel-s/eee5ca0b19a0735e51e2fc6d5f4028f833afa056.zip",
-                "reference": "eee5ca0b19a0735e51e2fc6d5f4028f833afa056",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "suggest": {
-                "ext-inotify": "Inotify, used to reload all worker processes when your code is modified.",
-                "ext-swoole": "Event-driven asynchronous & concurrent & coroutine networking engine with high performance for PHP, require >= 1.7.19."
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Hhxsv5\\LaravelS\\Illuminate\\LaravelSServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Hhxsv5\\LaravelS\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Xie Biao",
-                    "email": "hhxsv5@sina.com"
-                }
-            ],
-            "description": "🚀 LaravelS: speed up Laravel/Lumen by Swoole, let's fly.",
-            "homepage": "https://github.com/hhxsv5/laravel-s",
-            "keywords": [
-                "High Performance",
-                "LaravelS",
-                "async event",
-                "async task",
-                "coroutine",
-                "http server",
-                "inotify reload",
-                "memory resident",
-                "swoole",
-                "tcp server",
-                "udp server",
-                "websocket server"
-            ],
-            "time": "2018-05-12T11:07:27+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -2716,33 +2654,6 @@
                 "environment"
             ],
             "time": "2016-06-14T14:14:52+00:00"
-        },
-        {
-            "name": "workerman/gatewayclient",
-            "version": "v3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/walkor/GatewayClient.git",
-                "reference": "e58edc1f5eee7465c24fc97d8adff1f59b1b8455"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://files.phpcomposer.com/files/walkor/GatewayClient/e58edc1f5eee7465c24fc97d8adff1f59b1b8455.zip",
-                "reference": "e58edc1f5eee7465c24fc97d8adff1f59b1b8455",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "GatewayClient\\": "./"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "homepage": "http://www.workerman.net",
-            "time": "2016-12-07T09:06:11+00:00"
         }
     ],
     "packages-dev": [
