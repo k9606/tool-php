@@ -15,7 +15,7 @@ Route::get('/test', function () {
     return view('test');
 });
 
-Route::get('/send', 'TestController@index');
+Route::get('/send/{msg?}', 'TestController@index');
 
 Route::group(['namespace' => 'Drama'], function () {
     Route::resource('/', 'IndexController@index');
