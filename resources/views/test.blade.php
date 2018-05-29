@@ -27,7 +27,7 @@
     websocket.onmessage = function(evt) {
         console.log("ws-server-return-data:" + evt.data);
         html += '<h4>' + evt.data + '</h4>';
-        $('#t').append(html);
+        $('#t').html(html);
     }
 
     //onclose
