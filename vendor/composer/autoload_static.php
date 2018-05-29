@@ -87,6 +87,7 @@ class ComposerStaticInitf552daa799ac2a29694936bdf07fc081
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
             'Goutte\\' => 7,
+            'GatewayClient\\' => 14,
         ),
         'F' => 
         array (
@@ -253,6 +254,10 @@ class ComposerStaticInitf552daa799ac2a29694936bdf07fc081
         'Goutte\\' => 
         array (
             0 => __DIR__ . '/..' . '/fabpot/goutte/Goutte',
+        ),
+        'GatewayClient\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/workerman/gatewayclient',
         ),
         'Faker\\' => 
         array (
@@ -1114,6 +1119,9 @@ class ComposerStaticInitf552daa799ac2a29694936bdf07fc081
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
+        'GatewayClient\\Context' => __DIR__ . '/..' . '/workerman/gatewayclient/Gateway.php',
+        'GatewayClient\\Gateway' => __DIR__ . '/..' . '/workerman/gatewayclient/Gateway.php',
+        'GatewayClient\\GatewayProtocol' => __DIR__ . '/..' . '/workerman/gatewayclient/Gateway.php',
         'Goutte\\Client' => __DIR__ . '/..' . '/fabpot/goutte/Goutte/Client.php',
         'GuzzleHttp\\Client' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Client.php',
         'GuzzleHttp\\ClientInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/ClientInterface.php',

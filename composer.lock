@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "52424b80eafd55c951f1e8129cd1f6aa",
+    "content-hash": "19c418d5fea80706e750ad8f9e909789",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -2654,6 +2654,33 @@
                 "environment"
             ],
             "time": "2016-06-14T14:14:52+00:00"
+        },
+        {
+            "name": "workerman/gatewayclient",
+            "version": "v3.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/walkor/GatewayClient.git",
+                "reference": "b4f47ed2d8097d3ce8aed23ba2cd37c98345cffb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/walkor/GatewayClient/b4f47ed2d8097d3ce8aed23ba2cd37c98345cffb.zip",
+                "reference": "b4f47ed2d8097d3ce8aed23ba2cd37c98345cffb",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GatewayClient\\": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "homepage": "http://www.workerman.net",
+            "time": "2018-05-22T17:03:01+00:00"
         }
     ],
     "packages-dev": [

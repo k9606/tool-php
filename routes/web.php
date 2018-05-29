@@ -15,6 +15,10 @@ Route::get('/test', function () {
     return view('test');
 });
 
+Route::group(['namespace' => 'Test'], function () {
+    Route::resource('/send', 'TestController@index');
+});
+
 Route::group(['namespace' => 'Drama'], function () {
     Route::resource('/', 'IndexController@index');
 });

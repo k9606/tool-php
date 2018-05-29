@@ -13,11 +13,10 @@ use Illuminate\Support\Facades\Mail;
 class TestController extends Controller
 {
     //
-    public function index() {
+    public function index()
+    {
 
-        Gateway::$registerAddress = '192.168.0.144:8282';
-        Gateway::sendToAll('jj');
-        //Gateway::sendToAll('fvf');
+        Gateway::sendToAll('fdfbdd');
     }
 
     public function test()
@@ -44,8 +43,8 @@ class TestController extends Controller
 
     public function sendMail()
     {
-        $flag = Mail::raw('你好，！',function($message) {
-            $to ='1457275621@qq.com';
+        $flag = Mail::raw('你好，！', function ($message) {
+            $to = '1457275621@qq.com';
             $message->to($to)->subject('纯文rrr本信息邮件测试');
         });
 
@@ -95,7 +94,8 @@ class TestController extends Controller
     protected function grid()
     {
         $a = Movie::class;
-        var_dump($a);die();
+        var_dump($a);
+        die();
         $a = Admin::grid(Movie::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
@@ -117,6 +117,7 @@ class TestController extends Controller
         });
         var_dump($a);
     }
+
     public function index1()
     {
         return Admin::content(function (Content $content) {
