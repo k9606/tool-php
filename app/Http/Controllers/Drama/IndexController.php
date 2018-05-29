@@ -11,13 +11,31 @@ use Illuminate\Support\Facades\DB;
 class IndexController extends Controller
 {
     //
-    public function dramaList()
+    public function index(Request $request)
     {
-        $list = DB::table('drama')->limit(18)->get();
-        foreach ($list as $v) {
-            $v->image = 'http://files.zmzjstu.com/ftp' . $v->image;
+        $lists = DB::table('drama')
+            ->select('id', 'name', DB::raw("concat('http://files.zmzjstu.com/ftp', `image`) as image"))
+            ->paginate(18);
+
+        return view('drama.index', ['lists' => $lists]);
+    }
+
+    public function link(Request $request)
+    {
+        $id = $request->input('did');
+        if (!is_numeric($id)) return json_msg();
+
+        $sql = 'SELECT season, episode, link FROM `drama_link` where drama_id = ? ORDER BY season, episode';
+        $data = DB::select($sql, [$id]);
+        if (!$data) return json_msg();
+        foreach ($data as $k => $v) {
+            $list[$v->season] = [
+                'episode' => $v->episode,
+                'link' => $v->link
+            ];
         }
-        return json_encode($list);
+
+        return json_msg(200, '请求成功', $list);
     }
 
     public function dramaLink(Request $request)

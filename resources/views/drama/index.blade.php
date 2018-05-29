@@ -75,16 +75,25 @@
 
         {{--主体内容开始--}}
         <section class="content">
-            <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
-                    <div id="drama-link" class="panel panel-primary">
-                        <!-- Default panel contents -->
+                    <div class="panel panel-primary">
+
+                        <div class="panel-heading">行尸走肉 ed2k
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="panel-body" id="drama-link">
+
+                        </div>
 
                     </div>
                 </div>
             </div>
 
-            <div class="modal fade bs-example-modal-sm" id="myModall" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+            <div class="modal fade bs-example-modal-sm" id="myModall" tabindex="-1" role="dialog"
+                 aria-labelledby="mySmallModalLabel">
                 <div class="modal-dialog modal-sm" role="document">
                     <div class="alert alert-info" role="alert" style="text-align: center">下载链复制成功</div>
                 </div>
@@ -92,11 +101,15 @@
 
             <div class="marketing">
                 <div id="drama-list" class="row">
-                    <div class="front-loading">
-                        <div class="front-loading-block"></div>
-                        <div class="front-loading-block"></div>
-                        <div class="front-loading-block"></div>
-                    </div>
+                    @foreach ($lists as $list)
+                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                            <img class="img-rounded" src="{{ $list->image }}" alt="Generic placeholder image">
+                            <h4>{{ $list->name }}</h4>
+                            <p><a did="{{ $list->id }}" class="btn btn-default btn-sm btn-down" href="#" role="button"
+                                  data-toggle="modal" data-target="#myModal"><i class="fa fa-hand-o-down"
+                                                                                aria-hidden="true"></i></a></p>
+                        </div>
+                    @endforeach
                 </div>
             </div>
 
@@ -113,55 +126,54 @@
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('js/adminlte.min.js')}}"></script>
 <script>
-    $(function() {
-        $.ajax({
-            url:'{{ url('api/dramalist') }}',
-            dataType: 'json',
-            beforeSend : function () {
-                $(".front-loading").show();
-            },
-            complete : function () {
-                $(".front-loading").hide();
-            },
-            success : function(data) {
-                var html = "";
-                $.each(data, function(i, item) {
-                    html +=
-                        "<div class=\"col-xs-6 col-sm-4 col-md-3 col-lg-2\">\n" +
-                        "<img class=\"img-rounded\" src="+item['image']+" alt=\"Generic placeholder image\">\n" +
-                        "<h4>"+item['name']+"</h4>\n" +
-                        "<p><a class=\"btn btn-default btn-sm\" href=\"#\" role=\"button\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></i></a></p>\n" +
-                        "</div>";
-                });
-                $("#drama-list").html(html);
-            }
-        });
-    });
+    {{--$(function() {--}}
+    {{--$.ajax({--}}
+    {{--url:'{{ url('api/dramalist') }}',--}}
+    {{--dataType: 'json',--}}
+    {{--beforeSend : function () {--}}
+    {{--$(".front-loading").show();--}}
+    {{--},--}}
+    {{--complete : function () {--}}
+    {{--$(".front-loading").hide();--}}
+    {{--},--}}
+    {{--success : function(data) {--}}
+    {{--var html = "";--}}
+    {{--$.each(data, function(i, item) {--}}
+    {{--html +=--}}
+    {{--"<div class=\"col-xs-6 col-sm-4 col-md-3 col-lg-2\">\n" +--}}
+    {{--"<img class=\"img-rounded\" src="+item['image']+" alt=\"Generic placeholder image\">\n" +--}}
+    {{--"<h4>"+item['name']+"</h4>\n" +--}}
+    {{--"<p><a class=\"btn btn-default btn-sm\" href=\"#\" role=\"button\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></i></a></p>\n" +--}}
+    {{--"</div>";--}}
+    {{--});--}}
+    {{--$("#drama-list").html(html);--}}
+    {{--}--}}
+    {{--});--}}
+    {{--});--}}
 
-    $('.time-close').click(function() {
+    $('.btn-down').click(function () {
+        var did = $(this).attr('did');
+        var html = '';
         $.ajax({
-            url:'{{ url('api/dramalink') }}',
+            url: '{{ url('api/dramalink') }}',
+            data: {'did': did},
             dataType: 'json',
-            beforeSend : function () {
+            type: 'post',
+            beforeSend: function () {
                 $(".front-loading").show();
             },
-            complete : function () {
+            complete: function () {
                 $(".front-loading").hide();
             },
-            success : function(data) {
-                var html = "<div class=\"panel-heading\">行尸走肉 ed2k\n" +
-                    "                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
-                    "                        </div>\n" +
-                    "                        <div class=\"panel-body\">\n" +
-                    "                            <div class=\"my-collect\">\n" +
-                    "                                <button type=\"button\" class=\"btn btn-default\" disabled=\"disabled\"><i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i> 第三季</button>\n" +
-                    "                            </div>\n" +
-                    "                            <div class=\"row\">\n" +
-                    "                                <button type=\"button\" class=\"btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close\" data-dismiss=\"modal\" aria-label=\"Close\" data-toggle=\"modal\" data-target=\".bs-example-modal-sm\">第01集</button>\n" +
-                    "                            </div>\n" +
-                    "                        </div>";
-                $.each(data, function(i, item) {
-                    html += "";
+            success: function (data) {
+                $.each(data.data, function (i, item) {
+                    html += "<div class=\"my-collect\">\n" +
+                        "                                <button type=\"button\" class=\"btn btn-default\" disabled=\"disabled\"><i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i> 第" + i + "季</button>\n" +
+                        "                            </div>\n" +
+                        "                            <div class=\"row\">\n" +
+                        "                                <button type=\"button\" class=\"btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close\" data-dismiss=\"modal\" aria-label=\"Close\" data-toggle=\"modal\" data-target=\".bs-example-modal-sm\">第01集</button>\n" +
+                        "                            </div>";
+                    console.log(item);
                 });
                 $("#drama-link").html(html);
             }

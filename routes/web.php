@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('drama.index');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::group(['namespace' => 'Drama'], function () {
+    Route::resource('/', 'IndexController@index');
 });

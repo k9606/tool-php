@@ -143,7 +143,7 @@ class CrawlerDramaCommand extends Command
         DB::table('drama')->insert($data);
         echo '第 ' . $page . ' 页数据已处理' . "\r\n";
 
-        return sleep(3);
+        return;// sleep(3);
     }
 
     /**
@@ -252,9 +252,12 @@ class CrawlerDramaCommand extends Command
     {
         if ($vedioType == 'mp4') {
             $linkArr = explode('.mp4', $link);
+            if (!isset($linkArr[1])) $linkArr = explode('.MP4', $link);
         } elseif ($vedioType == 'mkv') {
             $linkArr = explode('.mkv', $link);
+            if (!isset($linkArr[1])) $linkArr = explode('.MKV', $link);
             if (!isset($linkArr[1])) $linkArr = explode('.mp4', $link);
+            if (!isset($linkArr[1])) $linkArr = explode('.MP4', $link);
         }
 
         $newlink = 'ed2k://|file|'
@@ -284,6 +287,6 @@ class CrawlerDramaCommand extends Command
         ]);
         echo $dramaData->name . '第 ' . $dramaData->season . ' 季第 ' . $dramaData->episode . ' 集链接已处理' . "\r\n";
 
-        return sleep(3);
+        return;// sleep(3);
     }
 }
