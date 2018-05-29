@@ -8,10 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-
+<div id="t"></div>
 </body>
 <script>
     var wsUrl = "ws://192.168.0.141:8282";
+    var html = '';
 
     var websocket = new WebSocket(wsUrl);
 
@@ -24,6 +25,8 @@
     // 实例化 onmessage
     websocket.onmessage = function(evt) {
         console.log("ws-server-return-data:" + evt.data);
+        html += '<h4> + evt.data + </h4>';
+        $('#t').append(html);
     }
 
     //onclose
