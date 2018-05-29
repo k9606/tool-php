@@ -10,6 +10,7 @@
 <body>
 <div id="t"></div>
 </body>
+<script src="{{asset('js/app.js')}}"></script>
 <script>
     var wsUrl = "ws://192.168.0.141:8282";
     var html = '';
