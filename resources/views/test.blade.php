@@ -11,30 +11,23 @@
 
 </body>
 <script>
-    var wsUrl = "ws://192.168.0.141:8282";
+    var websocket = new WebSocket('ws://192.168.0.141:8282');
 
-    var websocket = new WebSocket(wsUrl);
-
-    //实例对象的onopen属性
     websocket.onopen = function(evt) {
-        websocket.send("hello");
-        console.log("conected-swoole-success");
-    }
+        //websocket.send("hello");
+        console.log('onopen' + evt);
+    };
 
-    // 实例化 onmessage
     websocket.onmessage = function(evt) {
-        console.log("ws-server-return-data:" + evt.data);
-    }
+        console.log('onmessage' + evt);
+    };
 
-    //onclose
     websocket.onclose = function(evt) {
-        console.log("close");
-    }
-    //onerror
+        console.log('onclose' + evt);
+    };
 
     websocket.onerror = function(evt, e) {
-        console.log("error:" + evt.data);
-    }
-
+        console.log('onerror' + evt + e);
+    };
 </script>
 </html>
