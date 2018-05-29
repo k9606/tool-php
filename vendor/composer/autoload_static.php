@@ -377,7 +377,6 @@ class ComposerStaticInitf552daa799ac2a29694936bdf07fc081
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
-        'App\\Services\\WebsocketService' => __DIR__ . '/../..' . '/app/Services/WebsocketService.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'Barryvdh\\Debugbar\\Console\\ClearCommand' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Console/ClearCommand.php',
         'Barryvdh\\Debugbar\\Console\\PublishCommand' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Console/PublishCommand.php',

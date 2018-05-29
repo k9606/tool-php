@@ -11,9 +11,9 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/test', function () {
+    return view('test');
+});
 
 Route::group(['namespace' => 'Drama'], function () {
     Route::resource('/', 'IndexController@index');

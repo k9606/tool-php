@@ -29,7 +29,6 @@ return array(
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
-    'App\\Services\\WebsocketService' => $baseDir . '/app/Services/WebsocketService.php',
     'App\\User' => $baseDir . '/app/User.php',
     'Barryvdh\\Debugbar\\Console\\ClearCommand' => $vendorDir . '/barryvdh/laravel-debugbar/src/Console/ClearCommand.php',
     'Barryvdh\\Debugbar\\Console\\PublishCommand' => $vendorDir . '/barryvdh/laravel-debugbar/src/Console/PublishCommand.php',
