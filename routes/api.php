@@ -22,5 +22,5 @@ Route::group(['namespace' => 'Drama'], function () {
 });
 
 Route::group(['namespace' => 'Gatewayworker'], function () {
-    Route::resource('/send/{msg?}', 'GatewayworkerController@link');
+    Route::resource('/send/{msg?}', 'IndexController@index');
 });
