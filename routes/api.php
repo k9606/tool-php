@@ -20,3 +20,7 @@ Route::get('/user', function (Request $request) {
 Route::group(['namespace' => 'Drama'], function () {
     Route::resource('/dramalink', 'IndexController@link');
 });
+
+Route::group(['namespace' => 'Gatewayworker'], function () {
+    Route::resource('/send/{msg?}', 'GatewayworkerController@link');
+});
