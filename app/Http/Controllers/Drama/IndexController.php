@@ -25,17 +25,33 @@ class IndexController extends Controller
         $id = $request->input('did');
         if (!is_numeric($id)) return json_msg();
 
-        $sql = 'SELECT season, episode, link FROM `drama_link` where drama_id = ? ORDER BY season, episode';
-        $data = DB::select($sql, [$id]);
-        if (!$data) return json_msg();
-        foreach ($data as $k => $v) {
-            $list[$v->season] = [
-                'episode' => $v->episode,
-                'link' => $v->link
-            ];
+        $data = DB::table('drama_link')
+            ->where('drama_id', $id)
+            ->orderBy('season')
+            ->orderBy('episode')
+            ->get(['season', 'episode', 'link'])
+            ->toArray();
+
+        foreach ($data as $v) {
+            $season[] = $v->season;
         }
 
-        return json_msg(200, '请求成功', $list);
+        $season = array_unique($season);
+
+        //for ()
+
+        foreach ($data as $dv) {
+            foreach ($season as $sv) {
+                if ($dv->season == $sv) {
+                    $newData[$sv][] = [
+                        'episode' => $dv->episode,
+                        'link' => $dv->link
+                    ];
+                }
+            }
+        }
+
+        return json_msg(200, '请求成功', $newData);
     }
 
     public function dramaLink(Request $request)
@@ -49,6 +65,7 @@ class IndexController extends Controller
         foreach ($list as $v) {
             $arr['s'] = $v->season;
         }
-        //return json_msg(200, '请求成功', $list);
+
+        return json_msg(200, '请求成功', $list);
     }
 }
