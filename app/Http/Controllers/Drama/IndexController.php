@@ -14,9 +14,9 @@ class IndexController extends Controller
     public function index(Request $request)
     {
         $lists = DB::table('drama')
-            ->select('id', 'name', DB::raw("concat('http://files.zmzjstu.com/ftp', `image`) as image"))
+            ->select('id','name', DB::raw("if(CHAR_LENGTH(`name`) > 8, concat(substring(`name`, 1, 6), '...'), `name`) as tname"), DB::raw("concat('http://files.zmzjstu.com/ftp', `image`) as image"))
             ->paginate(18);
-
+//
         return view('drama.index', ['lists' => $lists]);
     }
 
