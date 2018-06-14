@@ -15,7 +15,7 @@ class IndexController extends Controller
     {
         $msg = $request->input('msg');
         $ClientId = $request->input('client_id');
-        Gateway::sendToAll($msg);//, '', $ClientId);
+        Gateway::sendToAll($msg, '', $ClientId);
 
         return jsonp_msg(200, 'ok', $msg);
     }
