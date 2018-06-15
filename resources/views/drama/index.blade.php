@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/carousel.css')}}">
     <link rel="stylesheet" href="{{asset('css/spop.min.css')}}">
-    {{--<link rel="stylesheet" href="{{asset('css/loading.css')}}">--}}
+    <link rel="stylesheet" href="{{asset('css/jquery.toast.min.css')}}">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -52,9 +52,10 @@
                 </div>
             </div>
             <ul class="sidebar-menu" data-widget="tree">
-                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span> 美剧</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>普通菜单2</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>普通菜单3</span></a></li>
+                <li><a href="{{ url('/') }}"><i class="fa fa-circle-o text-red"></i><span>&nbsp;美剧</span></a></li>
+                <li><a href="{{ url('/message') }}"><i class="fa fa-circle-o text-yellow"></i><span>&nbsp;socket&nbsp;基础</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i><span>&nbsp;普通菜单3</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-green"></i><span>&nbsp;普通菜单4</span></a></li>
             </ul>
         </section>
     </aside>
@@ -76,49 +77,6 @@
 
         {{--主体内容开始--}}
         <section class="content">
-            <div class="box box-danger direct-chat direct-chat-danger">
-                <div class="box-header with-border">
-                    <h3 class="box-title">websocket 测试</h3>
-                    <div class="box-tools pull-right">
-                        <span data-toggle="tooltip" title="3 New Messages" class="badge bg-red">3</span>
-                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts"
-                                data-widget="chat-pane-toggle"><i class="fa fa-comments"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <div class="direct-chat-messages">
-
-                    </div>
-
-                    <div class="direct-chat-contacts">
-                        <ul class="contacts-list">
-                            <li>
-                                <a href="#">
-                                    <img class="contacts-list-img" src="{{asset('images/user-default.jpg')}}"
-                                         alt="Contact Avatar">
-                                    <div class="contacts-list-info">
-              <span class="contacts-list-name">
-                Count Dracula
-                <small class="contacts-list-date pull-right">2/28/2015</small>
-              </span>
-                                        <span class="contacts-list-msg">How have you been? I was...</span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="box-footer">
-                    <div class="input-group">
-                        <input id="msg" type="text" name="message" placeholder="输入信息..." class="form-control">
-                        <span class="input-group-btn">
-        <button id="msg-send" type="button" class="btn btn-danger btn-flat">发 送</button>
-      </span>
-                    </div>
-                </div>
-            </div>
             <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog"
                  aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
@@ -128,6 +86,12 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
                         </div>
+                        {{--<div class="box box-danger direct-chat direct-chat-danger">fff</div>--}}
+
+                        {{--<div class="panel-heading"><span id="nna"></span>--}}
+                            {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span--}}
+                                        {{--aria-hidden="true">&times;</span></button>--}}
+                        {{--</div>--}}
                         <div class="panel-body" id="drama-link">
 
                         </div>
@@ -172,9 +136,11 @@
 <script src="{{asset('js/adminlte.min.js')}}"></script>
 <script src="{{asset('js/clipboard.min.js')}}"></script>
 <script src="{{asset('js/spop.min.js')}}"></script>
+<script src="{{asset('js/jquery.toast.min.js')}}"></script>
 {{--<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>--}}
 {{--<script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>--}}
 <script>
+
     $('.btn-down').click(function () {
         var nna = $(this).attr('nna');
         var did = $(this).attr('did');
@@ -196,7 +162,7 @@
                     var season = i + 1;
                     html +=
                         "<div class=\"my-collect\">\n" +
-                        "<button type=\"button\" class=\"btn btn-default\" disabled=\"disabled\"><i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i>第" + season + "季</button>\n" +
+                        "<button type=\"button\" class=\"btn btn-default\" disabled=\"disabled\"><i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i>&nbsp;&nbsp;第" + season + "季</button>\n" +
                         "</div>\n" +
                         "<div id=\"drama-links" + season + "\" class=\"row\">\n";
 
@@ -216,10 +182,19 @@
                 }
                 $('.spop-sd').click(function () {
                     //alert(22);
-                    spop({
-                        template: '下载链复制成功',
-                        autoclose: 1000
-                    });
+                    $.toast({
+                        text : "下载链复制成功",
+                        heading: '提示', // Optional heading to be shown on the toast
+                        //icon: 'success',
+                        allowToastClose : false,       // Show the close button or not
+                        hideAfter : 1000,
+                        stack: false,// `false` to make it sticky or time in miliseconds to hide after
+                       // loader : false,
+                        textAlign : 'left',
+                        loader: true,  // Whether to show loader or not. True by default
+                        loaderBg: '#ffffff', // Alignment of text i.e. left, right, center
+                        position : 'top-right'       // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values to position the toast on page
+                    })
                 });
             }
         });

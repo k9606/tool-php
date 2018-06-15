@@ -20,3 +20,7 @@ Route::get('/send/{msg?}', 'TestController@index');
 Route::group(['namespace' => 'Drama'], function () {
     Route::resource('/', 'IndexController@index');
 });
+
+Route::group(['namespace' => 'Message'], function () {
+    Route::resource('/message', 'IndexController@index');
+});
