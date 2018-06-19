@@ -157,7 +157,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data: {client_id: evt.data.substring(15)},
-                dataType: 'json',
+                dataType: 'jsonp',
                 type: 'post'
             });
 
