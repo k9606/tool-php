@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Message;
 
+use GatewayClient\Gateway;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
@@ -14,6 +16,16 @@ class IndexController extends Controller
     public function index()
     {
         return view('drama.chat');
+    }
+
+    public function bind(Request $request)
+    {
+        $userId = Auth::user()['id'];
+
+        $clientId = $request->input('client_id');
+
+        Gateway::bindUid($clientId, $userId);
+        //vpd($userId,2);
     }
 
     public function link(Request $request)

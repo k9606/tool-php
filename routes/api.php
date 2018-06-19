@@ -21,6 +21,6 @@ Route::group(['namespace' => 'Drama'], function () {
     Route::resource('/dramalink', 'IndexController@link');
 });
 
-Route::group(['namespace' => 'Gatewayworker'], function () {
-    Route::resource('/send', 'IndexController@index');
+Route::group(['namespace' => 'Api'], function () {
+    Route::resource('/send', 'CommonController@index');
 });

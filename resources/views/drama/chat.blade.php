@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>knskzs</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
@@ -44,7 +45,7 @@
                     <img src="{{asset('images/user-default.jpg')}}" class="img-circle" alt="头像">
                 </div>
                 <div class="pull-left info">
-                    <p>用户名</p>woole
+                    <p>用户名</p>
                     <a href="#"><i class="fa fa-circle text-success"></i> 登录</a>
                 </div>
             </div>
@@ -81,10 +82,10 @@
                     <h3 class="box-title">websocket 测试</h3>
                     <div class="box-tools pull-right">
                         <span data-toggle="tooltip" title="3 New Messages" class="badge bg-red">3</span>
-                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        {{--<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>--}}
                         <button class="btn btn-box-tool" data-toggle="tooltip" title="Contacts"
                                 data-widget="chat-pane-toggle"><i class="fa fa-comments"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        {{--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>--}}
                     </div>
                 </div>
                 <div class="box-body">
@@ -137,7 +138,6 @@
 <script>
 
 
-
     var ws = new WebSocket('ws://192.168.0.141:8282');
     var msgHtml = '';
 
@@ -150,6 +150,19 @@
         //console.log(ff);
         if (evt.data.indexOf('clientmarkk9606') != -1) {
             localStorage.setItem('clientId', evt.data.substring(15));
+
+            $.ajax({
+                url: 'http://192.168.0.141/bind',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {client_id: evt.data.substring(15)},
+                dataType: 'json',
+                type: 'post'
+            });
+
+            {{--$.post("{{ url('/bind') }}", {client_id: evt.data.substring(15)}, function (data) {--}}
+            {{--}, 'json');--}}
         } else {
             msgHtml +=
                 "<div class=\"direct-chat-msg\">\n" +
@@ -179,7 +192,7 @@
 
     $('#msg-send').click(function () {
         var msg = $('#msg').val();
-        if ($.trim(msg) == '' ) return;
+        if ($.trim(msg) == '') return;
 
         var clientId = localStorage.getItem('clientId');
         //alert(clientId);

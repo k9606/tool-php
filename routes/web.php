@@ -27,4 +27,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['namespace' => 'Message', 'middleware' => 'auth'], function () {
     Route::resource('/message', 'IndexController@index');
+
+    Route::resource('/bind', 'IndexController@bind');
+
 });
