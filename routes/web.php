@@ -21,9 +21,10 @@ Route::group(['namespace' => 'Drama'], function () {
     Route::resource('/', 'IndexController@index');
 });
 
-Route::group(['namespace' => 'Message'], function () {
-    Route::resource('/message', 'IndexController@index');
-});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['namespace' => 'Message', 'middleware' => 'auth'], function () {
+    Route::resource('/message', 'IndexController@index');
+});
