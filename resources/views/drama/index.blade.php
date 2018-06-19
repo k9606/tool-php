@@ -47,13 +47,24 @@
                     <img src="{{asset('images/user-default.jpg')}}" class="img-circle" alt="头像">
                 </div>
                 <div class="pull-left info">
-                    <p>用户名</p>
-                    <a href="#"><i class="fa fa-circle text-success"></i> 登录</a>
+                    @if (Auth::guest())
+                        <p>用户名</p>
+                        <a href="{{ url('/login') }}"><i class="fa fa-circle text-success"></i> 登录</a>
+                    @else
+                        <p>{{ Auth::user()->name }}</p>
+                        <a href="{{ url('/logout') }}"
+                           onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                    class="fa fa-circle text-success"></i> 退出</a>
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    @endif
                 </div>
             </div>
             <ul class="sidebar-menu" data-widget="tree">
                 <li><a href="{{ url('/') }}"><i class="fa fa-circle-o text-red"></i><span>&nbsp;美剧</span></a></li>
-                <li><a href="{{ url('/message') }}"><i class="fa fa-circle-o text-yellow"></i><span>&nbsp;socket&nbsp;基础</span></a></li>
+                <li><a href="{{ url('/message') }}"><i
+                                class="fa fa-circle-o text-yellow"></i><span>&nbsp;socket&nbsp;基础</span></a></li>
                 <li><a href="#"><i class="fa fa-circle-o text-aqua"></i><span>&nbsp;普通菜单3</span></a></li>
                 <li><a href="#"><i class="fa fa-circle-o text-green"></i><span>&nbsp;普通菜单4</span></a></li>
             </ul>
@@ -89,8 +100,8 @@
                         {{--<div class="box box-danger direct-chat direct-chat-danger">fff</div>--}}
 
                         {{--<div class="panel-heading"><span id="nna"></span>--}}
-                            {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span--}}
-                                        {{--aria-hidden="true">&times;</span></button>--}}
+                        {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span--}}
+                        {{--aria-hidden="true">&times;</span></button>--}}
                         {{--</div>--}}
                         <div class="panel-body" id="drama-link">
 
@@ -101,10 +112,10 @@
             </div>
 
             {{--<div class="modal fade bs-example-modal-sm" id="myModall" tabindex="-1" role="dialog"--}}
-                 {{--aria-labelledby="mySmallModalLabel">--}}
-                {{--<div class="modal-dialog modal-sm" role="document">--}}
-                    {{--<div class="alert alert-info" role="alert" style="text-align: center">下载链复制成功</div>--}}
-                {{--</div>--}}
+            {{--aria-labelledby="mySmallModalLabel">--}}
+            {{--<div class="modal-dialog modal-sm" role="document">--}}
+            {{--<div class="alert alert-info" role="alert" style="text-align: center">下载链复制成功</div>--}}
+            {{--</div>--}}
             {{--</div>--}}
 
             <div class="marketing">
@@ -113,7 +124,8 @@
                         <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
                             <img class="img-rounded" src="{{ $list->image }}" alt="Generic placeholder image">
                             <h4>{{ $list->tname }}</h4>
-                            <p><a did="{{ $list->id }}" nna="{{ $list->name }}" class="btn btn-default btn-sm btn-down" href="#" role="button"
+                            <p><a did="{{ $list->id }}" nna="{{ $list->name }}" class="btn btn-default btn-sm btn-down"
+                                  href="#" role="button"
                                   data-toggle="modal" data-target="#myModal"><i class="fa fa-hand-o-down"
                                                                                 aria-hidden="true"></i></a></p>
                         </div>
@@ -183,26 +195,23 @@
                 $('.spop-sd').click(function () {
                     //alert(22);
                     $.toast({
-                        text : "下载链复制成功",
+                        text: "下载链复制成功",
                         heading: '提示', // Optional heading to be shown on the toast
                         //icon: 'success',
-                        allowToastClose : false,       // Show the close button or not
-                        hideAfter : 1000,
+                        allowToastClose: false,       // Show the close button or not
+                        hideAfter: 1000,
                         stack: false,// `false` to make it sticky or time in miliseconds to hide after
-                       // loader : false,
-                        textAlign : 'left',
+                        // loader : false,
+                        textAlign: 'left',
                         loader: true,  // Whether to show loader or not. True by default
                         loaderBg: '#ffffff', // Alignment of text i.e. left, right, center
-                        position : 'top-right'       // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values to position the toast on page
+                        position: 'top-right'       // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values to position the toast on page
                     })
                 });
             }
         });
 
     });
-
-
-
 
 
     var clipboard = new ClipboardJS('.btn');

@@ -45,8 +45,18 @@
                     <img src="{{asset('images/user-default.jpg')}}" class="img-circle" alt="头像">
                 </div>
                 <div class="pull-left info">
-                    <p>用户名</p>
-                    <a href="#"><i class="fa fa-circle text-success"></i> 登录</a>
+                    @if (Auth::guest())
+                        <p>用户名</p>
+                        <a href="{{ url('/login') }}"><i class="fa fa-circle text-success"></i> 登录</a>
+                    @else
+                        <p>{{ Auth::user()->name }}</p>
+                        <a href="{{ url('/logout') }}"
+                           onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
+                                    class="fa fa-circle text-success"></i> 退出</a>
+                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    @endif
                 </div>
             </div>
             <ul class="sidebar-menu" data-widget="tree">
