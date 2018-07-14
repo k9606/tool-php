@@ -231,7 +231,7 @@
     $('#search-drama-name').click(function () {
         var dramaname = $('#drama-name').val();
         //alert(dramaName);
-        
+
         $.ajax({
             url: '{{ url('api/dramasearch') }}',
             data: {'dramaname': dramaname},
@@ -256,14 +256,14 @@
                             "</div>";
                     });
                     $("#drama-list").html(html);
-                html += '<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">\n' +
-                    '                            <img class="img-rounded" src="{{ $list->image }}" alt="Generic placeholder image">\n' +
-                    '                            <h4>{{ $list->tname }}</h4>\n' +
-                    '                            <p><a did="{{ $list->id }}" nna="{{ $list->name }}" class="btn btn-default btn-sm btn-down"\n' +
-                    '                                  href="#" role="button"\n' +
-                    '                                  data-toggle="modal" data-target="#myModal"><i class="fa fa-hand-o-down"\n' +
-                    '                                                                                aria-hidden="true"></i></a></p>\n' +
-                    '                        </div>';
+                //html += '<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">\n' +
+                //    '                            <img class="img-rounded" src="{{ $list->image }}" alt="Generic placeholder image">\n' +
+                //    '                            <h4>{{ $list->tname }}</h4>\n' +
+                //    '                            <p><a did="{{ $list->id }}" nna="{{ $list->name }}" class="btn btn-default btn-sm btn-down"\n' +
+                //    '                                  href="#" role="button"\n' +
+                //    '                                  data-toggle="modal" data-target="#myModal"><i class="fa fa-hand-o-down"\n' +
+                //    '                                                                                aria-hidden="true"></i></a></p>\n' +
+                //    '                        </div>';
             }
         });
 
