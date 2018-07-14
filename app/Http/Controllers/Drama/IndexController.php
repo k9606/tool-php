@@ -20,6 +20,17 @@ class IndexController extends Controller
         return view('drama.index', ['lists' => $lists]);
     }
 
+    public function search(Request $request)
+    {
+        $dramaName = $request->input('dramaname');
+        $lists = DB::table('drama')
+            ->select('id','name', DB::raw("if(CHAR_LENGTH(`name`) > 8, concat(substring(`name`, 1, 6), '...'), `name`) as tname"), DB::raw("concat('http://files.zmzjstu.com/ftp', `image`) as image"))
+            ->where('name', 'like', "%$dramaName%")->get();
+
+        return json_msg(200, 'ok', $lists);
+
+    }
+
     public function link(Request $request)
     {
         $id = $request->input('did');

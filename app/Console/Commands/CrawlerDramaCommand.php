@@ -68,7 +68,7 @@ class CrawlerDramaCommand extends Command
      */
     protected function baseData($client)
     {
-        for ($page = 1; $page >= 1; $page++) {
+        for ($page = 118; $page >= 1; $page++) {
             $crawler = $client->request('GET', "http://m.zimuzu.tv/resourcelist?channel=ustv&category=&year=&sort=update
             &page=$page");
             $this->getBaseData($crawler, $page);
@@ -90,6 +90,7 @@ class CrawlerDramaCommand extends Command
         $nameOrCode = $crawler->filter('p.desc > a.aurl');
         $image = $crawler->filter('div.img-item > a > img');
         $time = date('Y-m-d H:i:s', time());
+        $data = [];
         foreach ($nameOrCode as $k => $v) {
             $data[$k]['name'] = $v->textContent;
             $data[$k]['code'] = $this->shearCode($v->attributes['length']->textContent);

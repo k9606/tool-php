@@ -19,6 +19,7 @@ Route::get('/user', function (Request $request) {
 
 Route::group(['namespace' => 'Drama'], function () {
     Route::resource('/dramalink', 'IndexController@link');
+    Route::resource('/dramasearch', 'IndexController@search');
 });
 
 Route::group(['namespace' => 'Api'], function () {

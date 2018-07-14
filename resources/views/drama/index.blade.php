@@ -75,14 +75,29 @@
     <div class="content-wrapper">
         {{--主体头部开始--}}
         <section class="content-header">
+            <div class="pull-right">
+                <div class="form-inline pull-right">
+                    <form>
+                        <fieldset>
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-addon"><strong>剧名</strong></span>
+                                <input type="text" class="form-control" placeholder="剧名" name="dramaname" id="drama-name" value="">
+                            </div>
+
+                            <div class="btn-group btn-group-sm">
+                                <button type="button" id="search-drama-name" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                                <a href="http://local.knskzs.com/admin/auth/permissions?_pjax=%23pjax-container"
+                                   class="btn btn-warning"><i class="fa fa-undo"></i></a>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
             <h1>
                 大标题
                 <small>小标题</small>
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> 面包屑1</a></li>
-                <li class="active">面包屑2</li>
-            </ol>
         </section>
         {{--主体头部结束--}}
 
@@ -213,6 +228,46 @@
 
     });
 
+    $('#search-drama-name').click(function () {
+        var dramaname = $('#drama-name').val();
+        //alert(dramaName);
+        
+        $.ajax({
+            url: '{{ url('api/dramasearch') }}',
+            data: {'dramaname': dramaname},
+            dataType: 'json',
+            type: 'post',
+            beforeSend: function () {
+                $(".front-loading").show();
+            },
+            complete: function () {
+                $(".front-loading").hide();
+            },
+            success: function (data) {
+                console.log(data);
+                success : function(data) {
+                    var html = "";
+                    $.each(data, function(i, item) {
+                        html +=
+                            "<div class=\"col-xs-6 col-sm-4 col-md-3 col-lg-2\">\n" +
+                            "<img class=\"img-rounded\" src="+item['image']+" alt=\"Generic placeholder image\">\n" +
+                            "<h4>"+item['name']+"</h4>\n" +
+                            "<p><a class=\"btn btn-default btn-sm\" href=\"#\" role=\"button\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></i></a></p>\n" +
+                            "</div>";
+                    });
+                    $("#drama-list").html(html);
+                html += '<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">\n' +
+                    '                            <img class="img-rounded" src="{{ $list->image }}" alt="Generic placeholder image">\n' +
+                    '                            <h4>{{ $list->tname }}</h4>\n' +
+                    '                            <p><a did="{{ $list->id }}" nna="{{ $list->name }}" class="btn btn-default btn-sm btn-down"\n' +
+                    '                                  href="#" role="button"\n' +
+                    '                                  data-toggle="modal" data-target="#myModal"><i class="fa fa-hand-o-down"\n' +
+                    '                                                                                aria-hidden="true"></i></a></p>\n' +
+                    '                        </div>';
+            }
+        });
+
+    });
 
     var clipboard = new ClipboardJS('.btn');
 
