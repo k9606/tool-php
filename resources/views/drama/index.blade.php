@@ -81,12 +81,14 @@
                         <fieldset>
                             <div class="input-group input-group-sm">
                                 <span class="input-group-addon"><strong>剧名</strong></span>
-                                <input type="text" class="form-control" placeholder="剧名" name="dramaname" id="drama-name" value="">
+                                <input type="text" class="form-control" placeholder="剧名" name="dramaname"
+                                       id="drama-name" value="">
                             </div>
 
                             <div class="btn-group btn-group-sm">
-                                <button type="button" id="search-drama-name" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                                <a href="http://local.knskzs.com/admin/auth/permissions?_pjax=%23pjax-container"
+                                <button type="button" id="search-drama-name" class="btn btn-primary"><i
+                                            class="fa fa-search"></i></button>
+                                <a href="{{ url('/') }}"
                                    class="btn btn-warning"><i class="fa fa-undo"></i></a>
                             </div>
 
@@ -145,8 +147,9 @@
                                                                                 aria-hidden="true"></i></a></p>
                         </div>
                     @endforeach
+                    {{ $lists->links() }}
                 </div>
-                {{ $lists->links() }}
+
             </div>
 
         </section>
@@ -168,9 +171,11 @@
 {{--<script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>--}}
 <script>
 
-    $('.btn-down').click(function () {
+    $(document).on('click', '.btn-down', function () {
         var nna = $(this).attr('nna');
         var did = $(this).attr('did');
+        console.log(nna);
+        console.log(did);
         var html = '';
         $.ajax({
             url: '{{ url('api/dramalink') }}',
@@ -230,7 +235,7 @@
 
     $('#search-drama-name').click(function () {
         var dramaname = $('#drama-name').val();
-        //alert(dramaName);
+        if (dramaname == '') return false;
 
         $.ajax({
             url: '{{ url('api/dramasearch') }}',
@@ -244,26 +249,23 @@
                 $(".front-loading").hide();
             },
             success: function (data) {
-                console.log(data);
-                success : function(data) {
-                    var html = "";
-                    $.each(data, function(i, item) {
-                        html +=
-                            "<div class=\"col-xs-6 col-sm-4 col-md-3 col-lg-2\">\n" +
-                            "<img class=\"img-rounded\" src="+item['image']+" alt=\"Generic placeholder image\">\n" +
-                            "<h4>"+item['name']+"</h4>\n" +
-                            "<p><a class=\"btn btn-default btn-sm\" href=\"#\" role=\"button\" data-toggle=\"modal\" data-target=\"#myModal\"><i class=\"fa fa-hand-o-down\" aria-hidden=\"true\"></i></a></p>\n" +
-                            "</div>";
-                    });
-                    $("#drama-list").html(html);
-                //html += '<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">\n' +
-                //    '                            <img class="img-rounded" src="{{ $list->image }}" alt="Generic placeholder image">\n' +
-                //    '                            <h4>{{ $list->tname }}</h4>\n' +
-                //    '                            <p><a did="{{ $list->id }}" nna="{{ $list->name }}" class="btn btn-default btn-sm btn-down"\n' +
-                //    '                                  href="#" role="button"\n' +
-                //    '                                  data-toggle="modal" data-target="#myModal"><i class="fa fa-hand-o-down"\n' +
-                //    '                                                                                aria-hidden="true"></i></a></p>\n' +
-                //    '                        </div>';
+                var data = data.data;
+                var html = "";
+                $.each(data, function (i, item) {
+                    html +=
+                        '<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">\n' +
+                        '                    <img class="img-rounded" src="' + item.image + '" alt="Generic placeholder image">\n' +
+                        '                    <h4>' + item.tname + '</h4>\n' +
+                        '                    <p>\n' +
+                        '                        <a did="' + item.id + '" nna="' + item.name + '" class="btn btn-default btn-sm btn-down" href="#" role="button" data-toggle="modal" data-target="#myModal">\n' +
+                        '                            <i class="fa fa-hand-o-down" aria-hidden="true">\n' +
+                        '                            </i>\n' +
+                        '                        </a>\n' +
+                        '                    </p>\n' +
+                        '                </div>';
+                });
+                $("#drama-list").html(html);
+
             }
         });
 

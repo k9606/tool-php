@@ -18,8 +18,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 Route::group(['namespace' => 'Drama'], function () {
-    Route::resource('/dramalink', 'IndexController@link');
-    Route::resource('/dramasearch', 'IndexController@search');
+    Route::post('/dramalink', 'IndexController@link');
+    Route::post('/dramasearch', 'IndexController@search');
 });
 
 Route::group(['namespace' => 'Api'], function () {
