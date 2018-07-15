@@ -68,7 +68,7 @@ class CrawlerDramaCommand extends Command
      */
     protected function baseData($client)
     {
-        for ($page = 118; $page >= 1; $page++) {
+        for ($page = 1; $page >= 1; $page++) {
             $crawler = $client->request('GET', "http://m.zimuzu.tv/resourcelist?channel=ustv&category=&year=&sort=update
             &page=$page");
             $this->getBaseData($crawler, $page);
