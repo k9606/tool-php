@@ -174,8 +174,8 @@
     $(document).on('click', '.btn-down', function () {
         var nna = $(this).attr('nna');
         var did = $(this).attr('did');
-        console.log(nna);
-        console.log(did);
+        //console.log(nna);
+        //console.log(did);
         var html = '';
         $.ajax({
             url: '{{ url('api/dramalink') }}',
@@ -274,16 +274,16 @@
     var clipboard = new ClipboardJS('.btn');
 
     clipboard.on('success', function (e) {
-        console.info('Action:', e.action);
-        console.info('Text:', e.text);
-        console.info('Trigger:', e.trigger);
+        //console.info('Action:', e.action);
+        //console.info('Text:', e.text);
+        //console.info('Trigger:', e.trigger);
 
         e.clearSelection();
     });
 
     clipboard.on('error', function (e) {
-        console.error('Action:', e.action);
-        console.error('Trigger:', e.trigger);
+        //console.error('Action:', e.action);
+        //console.error('Trigger:', e.trigger);
     });
 
     {{--function getClientData() {--}}

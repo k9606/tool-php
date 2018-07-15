@@ -22,6 +22,6 @@ Route::group(['namespace' => 'Drama'], function () {
     Route::post('/dramasearch', 'IndexController@search');
 });
 
-Route::group(['namespace' => 'Api'], function () {
-    Route::resource('/send', 'CommonController@index');
-});
+//Route::group(['namespace' => 'Api'], function () {
+//    Route::resource('/send', 'CommonController@index');
+//});

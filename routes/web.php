@@ -11,23 +11,23 @@
 |
 */
 
-Route::get('/test', function () {
-    return view('test');
-});
-
-Route::get('/send/{msg?}', 'TestController@index');
+//Route::get('/test', function () {
+//    return view('test');
+//});
+//
+//Route::get('/send/{msg?}', 'TestController@index');
 
 Route::group(['namespace' => 'Drama'], function () {
     Route::resource('/', 'IndexController@index');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
-
-Route::group(['namespace' => 'Message', 'middleware' => 'auth'], function () {
-    Route::resource('/message', 'IndexController@index');
-
-    Route::resource('/bind', 'IndexController@bind');
-
-});
+//Auth::routes();
+//
+//Route::get('/home', 'HomeController@index');
+//
+//Route::group(['namespace' => 'Message', 'middleware' => 'auth'], function () {
+//    Route::resource('/message', 'IndexController@index');
+//
+//    Route::resource('/bind', 'IndexController@bind');
+//
+//});
