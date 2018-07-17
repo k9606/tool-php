@@ -239,6 +239,8 @@ class CrawlerDramaCommand extends Command
             }
         }
 
+        if (!isset($links[$num])) return false;
+
         return $this->renameLink($dramaData, $links[$num], $vedioType);
     }
 
@@ -254,6 +256,7 @@ class CrawlerDramaCommand extends Command
         if ($vedioType == 'mp4') {
             $linkArr = explode('.mp4', $link);
             if (!isset($linkArr[1])) $linkArr = explode('.MP4', $link);
+            if (!isset($linkArr[1])) $linkArr = explode('.mkv', $link);
         } elseif ($vedioType == 'mkv') {
             $linkArr = explode('.mkv', $link);
             if (!isset($linkArr[1])) $linkArr = explode('.MKV', $link);
@@ -279,6 +282,8 @@ class CrawlerDramaCommand extends Command
      */
     protected function saveLink($dramaData, $newlink)
     {
+        if (strlen($newlink) > 255) return;
+
         DB::table('drama_link')->insert([
             'drama_id' => $dramaData->id,
             'season' => $dramaData->season,
