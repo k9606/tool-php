@@ -10,7 +10,7 @@ Route::group([
     'middleware'    => ['web', 'admin'],
 ], function (Router $router) {
 
-    $router->get('/', 'HomeController@index');
-    $router->get('/Example', 'ExampleController@index');
+//    $router->get('/', 'HomeController@index');
+//    $router->get('/Example', 'ExampleController@index');
 
 });
