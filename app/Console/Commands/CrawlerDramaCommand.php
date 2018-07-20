@@ -231,7 +231,7 @@ class CrawlerDramaCommand extends Command
         foreach ($link as $v) {
             $linkArr[] = $v->attributes['length']->textContent;
         }
-        if (!$linkArr) return false;
+        if (!isset($linkArr)) return false;
 
         foreach ($linkArr as $v) {
             if (mb_strpos($v, 'ed2k://') !== false) {
@@ -256,13 +256,17 @@ class CrawlerDramaCommand extends Command
         if ($vedioType == 'mp4') {
             $linkArr = explode('.mp4', $link);
             if (!isset($linkArr[1])) $linkArr = explode('.MP4', $link);
+            if (!isset($linkArr[1])) $linkArr = explode('.mp4', $link);
+            if (!isset($linkArr[1])) $linkArr = explode('.MKV', $link);
             if (!isset($linkArr[1])) $linkArr = explode('.mkv', $link);
         } elseif ($vedioType == 'mkv') {
             $linkArr = explode('.mkv', $link);
             if (!isset($linkArr[1])) $linkArr = explode('.MKV', $link);
-            if (!isset($linkArr[1])) $linkArr = explode('.mp4', $link);
+            if (!isset($linkArr[1])) $linkArr = explode('.mkv', $link);
             if (!isset($linkArr[1])) $linkArr = explode('.MP4', $link);
+            if (!isset($linkArr[1])) $linkArr = explode('.mp4', $link);
         }
+        if (!isset($linkArr[1])) return false;
 
         $newlink = 'ed2k://|file|'
             . $dramaData->name . '[第' . $dramaData->season . '季第' . $dramaData->episode . '集][knskzs.com].'

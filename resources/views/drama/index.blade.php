@@ -72,24 +72,7 @@
     <div class="content-wrapper">
         {{--主体头部开始--}}
         <section class="content-header">
-            <div class="pull-right">
-                <div class="form-inline pull-right">
-                    <div>
-                        <fieldset>
-                            <div class="input-group input-group-sm">
-                                <span class="input-group-addon"><strong>剧名</strong></span>
-                                <input type="text" name="dramaname" id="drama-name" placeholder="剧名"
-                                       class="form-control">
-                                <span class="input-group-btn">
-                                    <a type="button" id="search-drama-name" class="btn btn-primary"><i
-                                                class="fa fa-search"></i></a>
-                                    <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-undo"></i></a>
-                                </span>
-                            </div>
-                        </fieldset>
-                    </div>
-                </div>
-            </div>
+
             <h1>
                 美剧
                 <small>列表</small>
@@ -129,22 +112,67 @@
             {{--</div>--}}
             {{--</div>--}}
 
-            <div class="marketing">
-                <div id="drama-list" class="row">
-                    @foreach ($lists as $list)
-                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                            <img class="img-rounded" src="{{ $list->image }}" alt="Generic placeholder image">
-                            <h4>{{ $list->tname }}</h4>
-                            <p><a did="{{ $list->id }}" nna="{{ $list->name }}" class="btn btn-default btn-sm btn-down"
-                                  href="#" role="button"
-                                  data-toggle="modal" data-target="#myModal"><i class="fa fa-hand-o-down"
-                                                                                aria-hidden="true"></i></a></p>
-                        </div>
-                    @endforeach
-                    {{ $lists->links() }}
-                </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box">
+                        <div class="box-header">
 
+                            <h3 class="box-title"></h3>
+
+                            <div class="pull-right">
+                                <div class="form-inline pull-right">
+                                    <div>
+                                        <fieldset>
+
+                                            <div class="input-group input-group-sm">
+                                                <span class="input-group-addon"><strong>剧名</strong></span>
+                                                <input type="text" name="dramaname" id="drama-name" placeholder="剧名"
+                                                       class="form-control">
+                                                <span class="input-group-btn">
+                                    <a type="button" id="search-drama-name" class="btn btn-primary"><i
+                                                class="fa fa-search"></i></a>
+                                    <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-undo"></i></a>
+                                </span>
+                                            </div>
+
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body table-responsive no-padding">
+                            <div class="marketing">
+                                <div id="drama-list" class="row">
+                                    @foreach ($lists as $list)
+                                        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                                            <img class="img-rounded" src="{{ $list->image }}"
+                                                 alt="Generic placeholder image">
+                                            <h4>{{ $list->tname }}</h4>
+                                            <p><a did="{{ $list->id }}" nna="{{ $list->name }}"
+                                                  class="btn btn-default btn-sm btn-down"
+                                                  href="#" role="button"
+                                                  data-toggle="modal" data-target="#myModal"><i
+                                                            class="fa fa-hand-o-down"
+                                                            aria-hidden="true"></i></a></p>
+                                        </div>
+                                    @endforeach
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="box-footer clearfix">
+                            {{ $lists->links() }}
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
             </div>
+
 
         </section>
         {{--主体内容结束--}}
