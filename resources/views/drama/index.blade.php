@@ -17,7 +17,7 @@
 <div class="wrapper">
     {{--顶部开始--}}
     <header class="main-header">
-        <a href="index2.html" class="logo">
+        <a href="" class="logo">
             <span class="logo-mini">kk</span>
             <span class="logo-lg">knskzs.com</span>
         </a>
@@ -63,10 +63,7 @@
             </div>
             <ul class="sidebar-menu" data-widget="tree">
                 <li><a href="{{ url('/') }}"><i class="fa fa-circle-o text-red"></i><span>&nbsp;美剧</span></a></li>
-                <li><a href="{{ url('/message') }}"><i
-                                class="fa fa-circle-o text-yellow"></i><span>&nbsp;socket&nbsp;基础</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i><span>&nbsp;普通菜单3</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-green"></i><span>&nbsp;普通菜单4</span></a></li>
+                <li><a href=""><i class="fa fa-circle-o text-yellow"></i><span>&nbsp;群聊 (在测试还没上线)</span></a></li>
             </ul>
         </section>
     </aside>
@@ -77,28 +74,25 @@
         <section class="content-header">
             <div class="pull-right">
                 <div class="form-inline pull-right">
-                    <form>
+                    <div>
                         <fieldset>
                             <div class="input-group input-group-sm">
                                 <span class="input-group-addon"><strong>剧名</strong></span>
-                                <input type="text" class="form-control" placeholder="剧名" name="dramaname"
-                                       id="drama-name" value="">
+                                <input type="text" name="dramaname" id="drama-name" placeholder="剧名"
+                                       class="form-control">
+                                <span class="input-group-btn">
+                                    <a type="button" id="search-drama-name" class="btn btn-primary"><i
+                                                class="fa fa-search"></i></a>
+                                    <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-undo"></i></a>
+                                </span>
                             </div>
-
-                            <div class="btn-group btn-group-sm">
-                                <button type="button" id="search-drama-name" class="btn btn-primary"><i
-                                            class="fa fa-search"></i></button>
-                                <a href="{{ url('/') }}"
-                                   class="btn btn-warning"><i class="fa fa-undo"></i></a>
-                            </div>
-
                         </fieldset>
-                    </form>
+                    </div>
                 </div>
             </div>
             <h1>
-                大标题
-                <small>小标题</small>
+                美剧
+                <small>列表</small>
             </h1>
         </section>
         {{--主体头部结束--}}
@@ -157,7 +151,11 @@
     </div>
     {{--底部开始--}}
     <footer class="main-footer">
-        版权
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 1.0.0
+        </div>
+        <strong>Copyright © 2018-2020 <a href="">Bishengfei Personal</a>.</strong> All rights
+        reserved.蜀ICP备18020458号
     </footer>
     {{--底部结束--}}
 </div>

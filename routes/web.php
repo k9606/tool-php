@@ -31,3 +31,7 @@ Route::group(['namespace' => 'Drama'], function () {
 //    Route::resource('/bind', 'IndexController@bind');
 //
 //});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
