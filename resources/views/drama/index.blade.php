@@ -165,7 +165,7 @@
 
                             </div>
                         </div>
-                        <div class="box-footer clearfix">
+                        <div id="drama-page" class="box-footer clearfix">
                             {{ $lists->links() }}
                         </div>
                         <!-- /.box-body -->
@@ -291,6 +291,7 @@
                         '                </div>';
                 });
                 $("#drama-list").html(html);
+                $("#drama-page").html('');
 
             }
         });
