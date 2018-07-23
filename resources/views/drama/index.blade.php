@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="{{asset('css/AdminLTE.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/carousel.css')}}">
-    <link rel="stylesheet" href="{{asset('css/spop.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/jquery.toast.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/loading.css')}}">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -49,12 +49,12 @@
                 <div class="pull-left info">
                     @if (Auth::guest())
                         <p>用户名</p>
-                        <a href="{{ url('/login') }}"><i class="fa fa-circle text-success"></i> 登录</a>
+                        <a href="{{ url('/login') }}"><i class="fa fa-circle text-yellow"></i> 未登陆</a>
                     @else
                         <p>{{ Auth::user()->name }}</p>
                         <a href="{{ url('/logout') }}"
                            onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
-                                    class="fa fa-circle text-success"></i> 退出</a>
+                                    class="fa fa-circle text-success"></i> 已登陆</a>
                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
@@ -82,6 +82,7 @@
 
         {{--主体内容开始--}}
         <section class="content">
+
             <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog"
                  aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
@@ -191,10 +192,7 @@
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('js/adminlte.min.js')}}"></script>
 <script src="{{asset('js/clipboard.min.js')}}"></script>
-<script src="{{asset('js/spop.min.js')}}"></script>
 <script src="{{asset('js/jquery.toast.min.js')}}"></script>
-{{--<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>--}}
-{{--<script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>--}}
 <script>
 
     $(document).on('click', '.btn-down', function () {
@@ -209,34 +207,53 @@
             dataType: 'json',
             type: 'post',
             beforeSend: function () {
-                $(".front-loading").show();
+                $("#nna").html('-');
+                $("#drama-link").html('<div class="front-loading">\n' +
+                    '                <div class="front-loading-block"></div>\n' +
+                    '                <div class="front-loading-block"></div>\n' +
+                    '                <div class="front-loading-block"></div>\n' +
+                    '            </div>');
+                //$(".front-loading").show();
             },
             complete: function () {
-                $(".front-loading").hide();
+                //$("#drama-link").html('aaa');
+                //$(".front-loading").hide();
             },
             success: function (data) {
-                var arr = Object.keys(data.data);
-                for (var i = 0; i < arr.length; i++) {
-                    var season = i + 1;
+                if (data.code == -1) {
+                    //TODO
+
                     html +=
                         "<div class=\"my-collect\">\n" +
-                        "<button type=\"button\" class=\"btn btn-default\" disabled=\"disabled\"><i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i>&nbsp;&nbsp;第" + season + "季</button>\n" +
-                        "</div>\n" +
-                        "<div id=\"drama-links" + season + "\" class=\"row\">\n";
+                        "<button type=\"button\" class=\"btn btn-default\" disabled=\"disabled\"><i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i>&nbsp;&nbsp;抱歉, 暂无数据</button>\n" +
+                        "</div>\n";
 
-                    for (var j = 0; j < data.data[season].length; j++) {//遍历json数组时，这么写p为索引，0,1
-
-                        var e = data.data[season][j]['episode'];
-                        var dlink = data.data[season][j]['link'];
-                        var trg = "j" + j + i + "i";
-
-                        // html += "<button type=\"button\" class=\"btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close\" data-dismiss=\"modal\" aria-label=\"Close\" data-toggle=\"modal\" data-target=\".bs-example-modal-sm\">第" + e + "集</button>\n";
-                        html += "<button type=\"button\" class=\"btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close spop-sd\" data-clipboard-target='#" + trg + "' data-dismiss=\"modal\" aria-label=\"Close\" data-toggle=\"modal\" data-target=\".bs-example-modal-sm\">第" + e + "集<input style='opacity: 0' id=" + trg + " type='text' value=" + dlink + "></button>\n";
-                        var cc = 'drama-links' + season;
-                    }
-                    html += "</div>";
                     $("#drama-link").html(html);
                     $("#nna").html(nna);
+                } else if (data.code == 200) {
+                    var arr = Object.keys(data.data);
+                    for (var i = 0; i < arr.length; i++) {
+                        var season = i + 1;
+                        html +=
+                            "<div class=\"my-collect\">\n" +
+                            "<button type=\"button\" class=\"btn btn-default\" disabled=\"disabled\"><i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i>&nbsp;&nbsp;第" + season + "季</button>\n" +
+                            "</div>\n" +
+                            "<div id=\"drama-links" + season + "\" class=\"row\">\n";
+
+                        for (var j = 0; j < data.data[season].length; j++) {//遍历json数组时，这么写p为索引，0,1
+
+                            var e = data.data[season][j]['episode'];
+                            var dlink = data.data[season][j]['link'];
+                            var trg = "j" + j + i + "i";
+
+                            // html += "<button type=\"button\" class=\"btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close\" data-dismiss=\"modal\" aria-label=\"Close\" data-toggle=\"modal\" data-target=\".bs-example-modal-sm\">第" + e + "集</button>\n";
+                            html += "<button type=\"button\" class=\"btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close spop-sd\" data-clipboard-target='#" + trg + "' data-dismiss=\"modal\" aria-label=\"Close\" data-toggle=\"modal\" data-target=\".bs-example-modal-sm\">第" + e + "集<input style='opacity: 0' id=" + trg + " type='text' value=" + dlink + "></button>\n";
+                            var cc = 'drama-links' + season;
+                        }
+                        html += "</div>";
+                        $("#drama-link").html(html);
+                        $("#nna").html(nna);
+                    }
                 }
                 $('.spop-sd').click(function () {
                     //alert(22);
