@@ -83,8 +83,7 @@
     <div class="content-wrapper">
         {{--主体头部开始--}}
         <section class="content-header">
-            <h1>
-                美剧
+            <h1>美剧
                 <small>列表</small>
             </h1>
         </section>
