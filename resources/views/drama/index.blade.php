@@ -9,16 +9,16 @@
     <title>knskzs</title>
 
     {{--<link rel="stylesheet" href="{{asset('css/app.css')}}">--}}
-    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     {{--<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">--}}
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     {{--<link rel="stylesheet" href="{{asset('css/AdminLTE.min.css')}}">--}}
-    <link href="https://cdn.bootcss.com/admin-lte/2.4.3/css/AdminLTE.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/admin-lte/2.4.2/css/AdminLTE.min.css" rel="stylesheet">
 
     {{--<link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">--}}
-    <link href="https://cdn.bootcss.com/admin-lte/2.4.3/css/skins/_all-skins.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/admin-lte/2.4.2/css/skins/_all-skins.min.css" rel="stylesheet">
 
     {{--<link rel="stylesheet" href="{{asset('css/jquery.toast.min.css')}}">--}}
     <link href="https://cdn.bootcss.com/jquery-toast-plugin/1.3.2/jquery.toast.min.css" rel="stylesheet">
@@ -172,16 +172,16 @@
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
 {{--<script src="{{asset('js/app.js')}}"></script>--}}
-<script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 {{--<script src="{{asset('js/adminlte.min.js')}}"></script>--}}
-<script src="https://cdn.bootcss.com/admin-lte/2.4.3/js/adminlte.min.js"></script>
+<script src="https://cdn.bootcss.com/admin-lte/2.4.2/js/adminlte.min.js"></script>
 
 {{--<script src="{{asset('js/jquery.toast.min.js')}}"></script>--}}
 <script src="https://cdn.bootcss.com/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 
 {{--<script src="{{asset('js/clipboard.min.js')}}"></script>--}}
-<script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.min.js"></script>
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.0/clipboard.min.js"></script>
 <script>
     $(document).on('click', '.btn-down', function () {
         var nna = $(this).attr('nna');
