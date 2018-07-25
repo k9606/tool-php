@@ -7,7 +7,7 @@
     <meta name="description" content="knskzs">
     <meta name="keywords"
           content="knskzs, knskzs美剧, 好看的美剧, 美剧下载, 美剧在线观看, 美剧网, 天天美剧, 美剧天堂, 美剧推荐, 人人美剧, 美剧, 看美剧, 美剧吧, 美剧在线, 美剧分享, 美剧百度云, 美剧更新, 最新美剧, 美剧排行榜前十名, 美剧排行榜, 科幻美剧, 美剧下载最好的网站, 有什么好看的美剧, 美剧迅雷下载, 美剧免费下载, 高清电影迅雷下载, 手机mp4电影下载, 最新电视剧在线观看, bt美剧, 高清美剧下载, 美剧bt下载, meijv, meiju, mj, knskzsmeijv, knskzsmeiju, knskzsmj">
-    <meta name="baidu-site-verification" content="1aCKMPkSod" />
+    <meta name="baidu-site-verification" content="iS3ORI53k7" />
     <title>knskzs</title>
 
     {{--<link rel="stylesheet" href="{{asset('css/app.css')}}">--}}
