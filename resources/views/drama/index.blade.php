@@ -4,13 +4,26 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="knskzs">
+    <meta name="keywords" content="knskzs, knskzs美剧">
     <title>knskzs</title>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/AdminLTE.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">
+
+    {{--<link rel="stylesheet" href="{{asset('css/app.css')}}">--}}
+    <link href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    {{--<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">--}}
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    {{--<link rel="stylesheet" href="{{asset('css/AdminLTE.min.css')}}">--}}
+    <link href="https://cdn.bootcss.com/admin-lte/2.4.3/css/AdminLTE.min.css" rel="stylesheet">
+
+    {{--<link rel="stylesheet" href="{{asset('css/_all-skins.min.css')}}">--}}
+    <link href="https://cdn.bootcss.com/admin-lte/2.4.3/css/skins/_all-skins.min.css" rel="stylesheet">
+
+    {{--<link rel="stylesheet" href="{{asset('css/jquery.toast.min.css')}}">--}}
+    <link href="https://cdn.bootcss.com/jquery-toast-plugin/1.3.2/jquery.toast.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="{{asset('css/carousel.css')}}">
-    <link rel="stylesheet" href="{{asset('css/jquery.toast.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/loading.css')}}">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -38,7 +51,6 @@
         </nav>
     </header>
     {{--顶部结束--}}
-
     {{--左侧开始--}}
     <aside class="main-sidebar">
         <section class="sidebar">
@@ -68,63 +80,39 @@
         </section>
     </aside>
     {{--左侧结束--}}
-
     <div class="content-wrapper">
         {{--主体头部开始--}}
         <section class="content-header">
-
             <h1>
                 美剧
                 <small>列表</small>
             </h1>
         </section>
         {{--主体头部结束--}}
-
         {{--主体内容开始--}}
         <section class="content">
-
             <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog"
                  aria-labelledby="myModalLabel">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="panel panel-primary">
-
                         <div class="panel-heading"><span id="nna"></span>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
                         </div>
-                        {{--<div class="box box-danger direct-chat direct-chat-danger">fff</div>--}}
-
-                        {{--<div class="panel-heading"><span id="nna"></span>--}}
-                        {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span--}}
-                        {{--aria-hidden="true">&times;</span></button>--}}
-                        {{--</div>--}}
                         <div class="panel-body" id="drama-link">
-
                         </div>
-
                     </div>
                 </div>
             </div>
-
-            {{--<div class="modal fade bs-example-modal-sm" id="myModall" tabindex="-1" role="dialog"--}}
-            {{--aria-labelledby="mySmallModalLabel">--}}
-            {{--<div class="modal-dialog modal-sm" role="document">--}}
-            {{--<div class="alert alert-info" role="alert" style="text-align: center">下载链复制成功</div>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="box">
                         <div class="box-header">
-
                             <h3 class="box-title"></h3>
-
                             <div class="pull-right">
                                 <div class="form-inline pull-right">
                                     <div>
                                         <fieldset>
-
                                             <div class="input-group input-group-sm">
                                                 <span class="input-group-addon"><strong>剧名</strong></span>
                                                 <input type="text" name="dramaname" id="drama-name" placeholder="剧名"
@@ -135,14 +123,10 @@
                                     <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-undo"></i></a>
                                 </span>
                                             </div>
-
                                         </fieldset>
                                     </div>
                                 </div>
-
-
                             </div>
-
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body table-responsive no-padding">
@@ -161,9 +145,7 @@
                                                             aria-hidden="true"></i></a></p>
                                         </div>
                                     @endforeach
-
                                 </div>
-
                             </div>
                         </div>
                         <div id="drama-page" class="box-footer clearfix">
@@ -173,8 +155,6 @@
                     </div>
                 </div>
             </div>
-
-
         </section>
         {{--主体内容结束--}}
     </div>
@@ -189,17 +169,23 @@
     {{--底部结束--}}
 </div>
 </body>
-<script src="{{asset('js/app.js')}}"></script>
-<script src="{{asset('js/adminlte.min.js')}}"></script>
-<script src="{{asset('js/clipboard.min.js')}}"></script>
-<script src="{{asset('js/jquery.toast.min.js')}}"></script>
-<script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
+{{--<script src="{{asset('js/app.js')}}"></script>--}}
+<script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+{{--<script src="{{asset('js/adminlte.min.js')}}"></script>--}}
+<script src="https://cdn.bootcss.com/admin-lte/2.4.3/js/adminlte.min.js"></script>
+
+{{--<script src="{{asset('js/jquery.toast.min.js')}}"></script>--}}
+<script src="https://cdn.bootcss.com/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
+
+{{--<script src="{{asset('js/clipboard.min.js')}}"></script>--}}
+<script src="https://cdn.bootcss.com/clipboard.js/2.0.1/clipboard.min.js"></script>
+<script>
     $(document).on('click', '.btn-down', function () {
         var nna = $(this).attr('nna');
         var did = $(this).attr('did');
-        //console.log(nna);
-        //console.log(did);
         var html = '';
         $.ajax({
             url: '{{ url('api/dramalink') }}',
@@ -213,21 +199,15 @@
                     '                <div class="front-loading-block"></div>\n' +
                     '                <div class="front-loading-block"></div>\n' +
                     '            </div>');
-                //$(".front-loading").show();
             },
             complete: function () {
-                //$("#drama-link").html('aaa');
-                //$(".front-loading").hide();
             },
             success: function (data) {
                 if (data.code == -1) {
-                    //TODO
-
                     html +=
                         "<div class=\"my-collect\">\n" +
                         "<button type=\"button\" class=\"btn btn-default\" disabled=\"disabled\"><i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i>&nbsp;&nbsp;抱歉, 暂无数据</button>\n" +
                         "</div>\n";
-
                     $("#drama-link").html(html);
                     $("#nna").html(nna);
                 } else if (data.code == 200) {
@@ -239,16 +219,11 @@
                             "<button type=\"button\" class=\"btn btn-default\" disabled=\"disabled\"><i class=\"fa fa-file-video-o\" aria-hidden=\"true\"></i>&nbsp;&nbsp;第" + season + "季</button>\n" +
                             "</div>\n" +
                             "<div id=\"drama-links" + season + "\" class=\"row\">\n";
-
-                        for (var j = 0; j < data.data[season].length; j++) {//遍历json数组时，这么写p为索引，0,1
-
+                        for (var j = 0; j < data.data[season].length; j++) {
                             var e = data.data[season][j]['episode'];
                             var dlink = data.data[season][j]['link'];
                             var trg = "j" + j + i + "i";
-
-                            // html += "<button type=\"button\" class=\"btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close\" data-dismiss=\"modal\" aria-label=\"Close\" data-toggle=\"modal\" data-target=\".bs-example-modal-sm\">第" + e + "集</button>\n";
                             html += "<button type=\"button\" class=\"btn btn-link col-xs-3 col-sm-2 col-md-1 col-lg-1 time-close spop-sd\" data-clipboard-target='#" + trg + "' data-dismiss=\"modal\" aria-label=\"Close\" data-toggle=\"modal\" data-target=\".bs-example-modal-sm\">第" + e + "集<input style='opacity: 0' id=" + trg + " type='text' value=" + dlink + "></button>\n";
-                            var cc = 'drama-links' + season;
                         }
                         html += "</div>";
                         $("#drama-link").html(html);
@@ -256,30 +231,25 @@
                     }
                 }
                 $('.spop-sd').click(function () {
-                    //alert(22);
                     $.toast({
                         text: "下载链复制成功",
-                        heading: '提示', // Optional heading to be shown on the toast
-                        //icon: 'success',
-                        allowToastClose: false,       // Show the close button or not
+                        heading: '提示',
+                        allowToastClose: false,
                         hideAfter: 1000,
-                        stack: false,// `false` to make it sticky or time in miliseconds to hide after
-                        // loader : false,
+                        stack: false,
                         textAlign: 'left',
-                        loader: true,  // Whether to show loader or not. True by default
-                        loaderBg: '#ffffff', // Alignment of text i.e. left, right, center
-                        position: 'top-right'       // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values to position the toast on page
+                        loader: true,
+                        loaderBg: '#ffffff',
+                        position: 'top-right'
                     })
                 });
             }
         });
-
     });
 
     $('#search-drama-name').click(function () {
         var dramaname = $('#drama-name').val();
         if (dramaname == '') return false;
-
         $.ajax({
             url: '{{ url('api/dramasearch') }}',
             data: {'dramaname': dramaname},
@@ -309,119 +279,15 @@
                 });
                 $("#drama-list").html(html);
                 $("#drama-page").html('');
-
             }
         });
-
     });
 
     var clipboard = new ClipboardJS('.btn');
-
     clipboard.on('success', function (e) {
-        //console.info('Action:', e.action);
-        //console.info('Text:', e.text);
-        //console.info('Trigger:', e.trigger);
-
         e.clearSelection();
     });
-
     clipboard.on('error', function (e) {
-        //console.error('Action:', e.action);
-        //console.error('Trigger:', e.trigger);
     });
-
-    {{--function getClientData() {--}}
-    {{--return remote_ip_info['city'] + returnCitySN['cip'];--}}
-    {{--}--}}
-
-    {{--//document.write("IP: " + returnCitySN['cip'] + "<br>地区代码: " + returnCitySN['cid'] + "<br>所在地: " + returnCitySN['cname']);--}}
-    {{--console.log(returnCitySN['cip']);--}}
-    {{--console.log(remote_ip_info['city']);//["province"] + "省" + ',' +remote_ip_info["city"] + "市")--}}
-
-    {{--var ws = new WebSocket('ws://192.168.0.141:8282');--}}
-    {{--var msgHtml = '';--}}
-
-    {{--ws.onopen = function (evt) {--}}
-    {{--//ws.send('44');--}}
-    {{--//console.log(evt);--}}
-    {{--};--}}
-
-    {{--ws.onmessage = function (evt) {--}}
-    {{--//console.log(ff);--}}
-    {{--if (evt.data.indexOf('clientmarkk9606') != -1) {--}}
-    {{--localStorage.setItem('clientId', evt.data.substring(15));--}}
-    {{--} else {--}}
-    {{--msgHtml +=--}}
-    {{--"<div class=\"direct-chat-msg\">\n" +--}}
-    {{--"<div class=\"direct-chat-info clearfix\">\n" +--}}
-    {{--"<span class=\"direct-chat-name pull-left\">" + getClientData() + "</span>\n" +--}}
-    {{--"<span class=\"direct-chat-timestamp pull-right\">" + getFormatDate() + "</span>\n" +--}}
-    {{--"</div>\n" +--}}
-    {{--"<img class=\"direct-chat-img\" src=\"{{ asset('images/user-default.jpg') }}\"\n" +--}}
-    {{--"alt=\"message user image\">\n" +--}}
-    {{--"<div class=\"direct-chat-text\">\n" + evt.data + "\n" +--}}
-    {{--"</div>\n" +--}}
-    {{--"</div>";--}}
-
-    {{--$('.direct-chat-messages').html(msgHtml);--}}
-    {{--//$('.direct-chat-msg').scrollTop();--}}
-    {{--$('.direct-chat-messages').scrollTop($('.direct-chat-messages')[0].scrollHeight);--}}
-    {{--}--}}
-    {{--};--}}
-
-    {{--ws.onclose = function () {--}}
-    {{--//alert('close');--}}
-    {{--};--}}
-
-    {{--ws.onerror = function () {--}}
-    {{--alert('error');--}}
-    {{--};--}}
-
-    {{--$('#msg-send').click(function () {--}}
-    {{--var msg = $('#msg').val();--}}
-    {{--if (msg == '') return;--}}
-    {{--var clientId = localStorage.getItem('clientId');--}}
-    {{--//alert(clientId);--}}
-    {{--$.ajax({--}}
-    {{--url: 'http://192.168.0.141/api/send',--}}
-    {{--data: {'msg': msg, 'client_id': clientId},--}}
-    {{--dataType: 'jsonp',--}}
-    {{--type: 'post',--}}
-    {{--success: function (data) {--}}
-    {{--msgHtml +=--}}
-    {{--"<div class=\"direct-chat-msg right\">\n" +--}}
-    {{--"<div class=\"direct-chat-info clearfix\">\n" +--}}
-    {{--"<span class=\"direct-chat-name pull-right\">" + getClientData() + "</span>\n" +--}}
-    {{--"<span class=\"direct-chat-timestamp pull-left\">" + getFormatDate() + "</span>\n" +--}}
-    {{--"</div>\n" +--}}
-    {{--"<img class=\"direct-chat-img\" src=\"{{asset('images/user-default.jpg')}}\"\n" +--}}
-    {{--"alt=\"message user image\">\n" +--}}
-    {{--"<div class=\"direct-chat-text\">\n" + data.data + "\n" +--}}
-    {{--"</div>\n" +--}}
-    {{--"</div>";--}}
-    {{--$('.direct-chat-messages').html(msgHtml);--}}
-    {{--//$('.direct-chat-msg').scrollTop();--}}
-    {{--$('.direct-chat-messages').scrollTop($('.direct-chat-messages')[0].scrollHeight);--}}
-    {{--}--}}
-    {{--});--}}
-    {{--$('#msg').val('');--}}
-    {{--});--}}
-
-    {{--$("body").keydown(function () {--}}
-    {{--if (event.keyCode == "13") {--}}
-    {{--$('#msg-send').click();--}}
-    {{--}--}}
-    {{--});--}}
-
-    {{--function getFormatDate() {--}}
-    {{--var nowDate = new Date();--}}
-    {{--var year = nowDate.getFullYear();--}}
-    {{--var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) : nowDate.getMonth() + 1;--}}
-    {{--var date = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();--}}
-    {{--var hour = nowDate.getHours() < 10 ? "0" + nowDate.getHours() : nowDate.getHours();--}}
-    {{--var minute = nowDate.getMinutes() < 10 ? "0" + nowDate.getMinutes() : nowDate.getMinutes();--}}
-    {{--var second = nowDate.getSeconds() < 10 ? "0" + nowDate.getSeconds() : nowDate.getSeconds();--}}
-    {{--return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;--}}
-    {{--}--}}
 </script>
 </html>
