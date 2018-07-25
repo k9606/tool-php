@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description" content="knskzs">
-    <meta name="keywords" content="knskzs, knskzs美剧">
+    <meta name="keywords"
+          content="knskzs, knskzs美剧, 好看的美剧, 美剧下载, 美剧在线观看, 美剧网, 天天美剧, 美剧天堂, 美剧推荐, 人人美剧, 美剧, 看美剧, 美剧吧, 美剧在线, 美剧分享, 美剧百度云, 美剧更新, 最新美剧, 美剧排行榜前十名, 美剧排行榜, 科幻美剧, 美剧下载最好的网站, 有什么好看的美剧, 美剧迅雷下载, 美剧免费下载, 高清电影迅雷下载, 手机mp4电影下载, 最新电视剧在线观看, bt美剧, 高清美剧下载, 美剧bt下载, meijv, meiju, mj">
     <title>knskzs</title>
 
     {{--<link rel="stylesheet" href="{{asset('css/app.css')}}">--}}
@@ -162,8 +163,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 1.0.0
         </div>
-        <strong>Copyright © 2018-2020 <a href="">Bishengfei Personal</a>.</strong> All rights
-        reserved.蜀ICP备18020458号
+        <strong>Copyright © 2018-<?php echo date('Y', time());?> <a href="">Bishengfei</a>.</strong> 蜀ICP备18020458号
     </footer>
     {{--底部结束--}}
 </div>
