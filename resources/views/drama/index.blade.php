@@ -58,7 +58,7 @@
         <section class="sidebar">
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="{{asset('images/user-default.jpg')}}" class="img-circle" alt="头像">
+                    <img src="{{asset('images/user-default.png')}}" class="img-circle" alt="头像">
                 </div>
                 <div class="pull-left info">
                     @if (Auth::guest())
