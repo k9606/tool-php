@@ -42,13 +42,33 @@ class TestCommand extends Command
     public function handle()
     {
         //
-        $client = new Client();
-        $guzzleClient = new \GuzzleHttp\Client();
-        for ($page = 235160; $page >= 43384; $page--) {
-            $this->gett($client, $guzzleClient, $page);
-            // TODO :
+        for ($i = 0; $i <= 10000; $i++) {
+            $urls[] = 'http://knskzs.com';
+            $urls[] = 'http://knskzs.com/';
+            for ($i = 0; $i <= 100; $i++) {
+                $urls[] = 'http://knskzs.com/?page=' . $i;
+            }
+            $api = 'http://data.zz.baidu.com/urls?site=knskzs.com&token=j2uKCZxtd8ieGZTc';
+            $ch = curl_init();
+            $options = [
+                CURLOPT_URL => $api,
+                CURLOPT_POST => true,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_POSTFIELDS => implode("\n", $urls),
+                CURLOPT_HTTPHEADER => array('Content-Type: text/plain'),
+            ];
+            curl_setopt_array($ch, $options);
+            $result = curl_exec($ch);
+            curl_close($ch);
+            echo $result . "\r\n";
+            echo date('Y-m-d H:i:s', time()) . ' - ' . time() . "\r\n";
+            echo "-------------------------------------\r\n";
+            echo "\r\n";
+            unset($urls);
+            sleep(60);
         }
 
+        echo 'end';
     }
 
     public function gett($client, $guzzleClient, $page)
@@ -140,7 +160,7 @@ class TestCommand extends Command
         foreach ($teleplayCount as $k => $v) {
             $data[$k][] = $v->textContent;
         }
-        
+
         var_dump($data);
     }
 

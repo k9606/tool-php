@@ -7,7 +7,7 @@
     <meta name="description" content="knskzs - 轻快的美剧下载网站.">
     <meta name="keywords"
           content="knskzs, knskzs美剧, 轻快美剧下载网站, 轻快美剧下载, 轻快美剧网站, 轻快美剧, 美剧, 美剧下载, 美剧百度, 美剧更新, 美剧迅雷, 美剧免费, 美剧高清, 美剧排行, 美剧网盘, 美剧最新">
-    <meta name="baidu-site-verification" content="IrxwE66ME6" />
+    <meta name="baidu-site-verification" content="IrxwE66ME6"/>
     <title>knskzs - 轻快的美剧下载网站</title>
 
     {{--<link rel="stylesheet" href="{{asset('css/app.css')}}">--}}
@@ -144,7 +144,7 @@
                                                   class="btn btn-default btn-sm btn-down"
                                                   href="#" role="button"
                                                   data-toggle="modal" data-target="#myModal"><i
-                                                            class="fa fa-hand-o-down"
+                                                            class="fa fa-download {{ $list->uptime }}"
                                                             aria-hidden="true"></i></a></p>
                                         </div>
                                     @endforeach
@@ -185,6 +185,11 @@
 {{--<script src="{{asset('js/clipboard.min.js')}}"></script>--}}
 <script src="https://cdn.bootcss.com/clipboard.js/2.0.0/clipboard.min.js"></script>
 <script>
+    $(function () {
+        var str = getFormatDate();
+        $('.' + str).html('&nbsp;new');
+    });
+
     $(document).on('click', '.btn-down', function () {
         var nna = $(this).attr('nna');
         var did = $(this).attr('did');
@@ -284,6 +289,15 @@
             }
         });
     });
+
+    function getFormatDate() {
+        var nowDate = new Date();
+        var year = nowDate.getFullYear();
+        var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1) : nowDate.getMonth() + 1;
+        var date = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();
+
+        return year + "-" + month + "-" + date;
+    }
 
     var clipboard = new ClipboardJS('.btn');
     clipboard.on('success', function (e) {
