@@ -78,6 +78,7 @@
             <ul class="sidebar-menu" data-widget="tree">
                 <li><a href="{{ url('/') }}"><i class="fa fa-circle-o text-red"></i><span>&nbsp;美剧</span></a></li>
                 <li><a href=""><i class="fa fa-circle-o text-yellow"></i><span>&nbsp;群聊 (在测试还没上线)</span></a></li>
+                <li><a href=""><i class="fa fa-circle-o text-green"></i><span>&nbsp;旅院验证...学弟学妹别删</span></a></li>
             </ul>
         </section>
     </aside>
