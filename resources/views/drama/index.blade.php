@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="description" content="knskzs - 轻快的美剧下载网站.">
-    <meta name="keywords" content="knskzs, knskzs美剧, 美剧, 美剧下载, 美剧百度, 美剧更新, 美剧迅雷, 美剧免费, 美剧高清, 美剧排行, 美剧网盘, 美剧最新">
+    <meta name="keywords"
+          content="knskzs, knskzs美剧, knskzs轻快的美剧下载网站, knskzs轻快美剧下载网站, knskzs轻快美剧下载, knskzs轻快美剧, 轻快的美剧下载网站, 轻快美剧下载网站, 轻快美剧下载, 轻快美剧, 美剧, 美剧下载, 美剧百度, 美剧更新, 美剧迅雷, 美剧免费, 美剧高清, 美剧排行, 美剧网盘, 美剧最新">
     <meta name="baidu-site-verification" content="IrxwE66ME6" />
     <title>knskzs - 轻快的美剧下载网站</title>
 
