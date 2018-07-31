@@ -256,6 +256,7 @@
 
     $('#search-drama-name').click(function () {
         var dramaname = $('#drama-name').val();
+        alert(dramaname.length);
         if (dramaname == '') return false;
         $.ajax({
             url: '{{ url('api/dramasearch') }}',

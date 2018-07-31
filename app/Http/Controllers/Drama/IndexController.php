@@ -22,11 +22,17 @@ class IndexController extends Controller
 
     public function search(Request $request)
     {
-        $dramaName = $request->input('dramaname');
-        if (!$dramaName) return json_msg();
+        $searchKey = $request->input('dramaname');
+        if (!$searchKey || mb_strlen($searchKey) > 10) return json_msg();
+        DB::table('drama_search_history')
+            ->insert([
+                'ip' => $request->getClientIp(),
+                'search_key' => $searchKey,
+                'created_at' => date('Y-m-d H:i:s', time())
+            ]);
         $lists = DB::table('drama')
             ->select('id', 'name', DB::raw("if(CHAR_LENGTH(`name`) > 8, concat(substring(`name`, 1, 6), '...'), `name`) as tname"), DB::raw("concat('http://renren.maoyun.tv/ftp', `image`) as image"), DB::raw("date(`updated_at`) as uptime"))
-            ->where('name', 'like', "%$dramaName%")->get();
+            ->where('name', 'like', "%$searchKey%")->get();
 
         return json_msg(200, 'ok', $lists);
 
