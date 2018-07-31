@@ -76,9 +76,9 @@
                 </div>
             </div>
             <ul class="sidebar-menu" data-widget="tree">
-                <li><a href="{{ url('/') }}"><i class="fa fa-circle-o text-red"></i><span>&nbsp;美剧</span></a></li>
-                <li><a href=""><i class="fa fa-circle-o text-yellow"></i><span>&nbsp;群聊 (在测试还没上线)</span></a></li>
-                <li><a href=""><i class="fa fa-circle-o text-green"></i><span>&nbsp;旅院验证...学弟学妹别删</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-red"></i><span>&nbsp;美剧</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-purple"></i><span>&nbsp;群聊 (未上线)</span></a></li>
+                <li><a href="#"><i class="fa fa-circle-o text-green"></i><span>&nbsp;时间线 (未上线)</span></a></li>
             </ul>
         </section>
     </aside>
@@ -108,7 +108,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="box">
+                    <div class="box box-primary">
                         <div class="box-header">
                             <h3 class="box-title"></h3>
                             <div class="pull-right">
@@ -166,7 +166,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 1.0.0
         </div>
-        <strong>Copyright © 2018-<?php echo date('Y', time());?> <a href="">Bishengfei</a>.</strong> 蜀ICP备18020458号
+        <strong>Copyright © 2018-<?php echo date('Y', time());?> <a href="#">knskzs.com</a>.</strong> 蜀ICP备18020458号
     </footer>
     {{--底部结束--}}
 </div>
