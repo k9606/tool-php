@@ -27,13 +27,8 @@
 
     <link rel="stylesheet" href="{{asset('css/carousel.css')}}">
     <link rel="stylesheet" href="{{asset('css/loading.css')}}">
-    <style>
-        .box {
-            border-top-color: #605ca8 !important;
-        }
-    </style>
 </head>
-<body class="hold-transition skin-purple sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
     {{--顶部开始--}}
     <header class="main-header">
@@ -50,7 +45,7 @@
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-clock-o"></i>
-                            <span class="label label-success">1</span>
+                            <span class="label label-warning">1</span>
                         </a>
                     </li>
                 </ul>
@@ -113,7 +108,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="box">
+                    <div class="box box-primary">
                         <div class="box-header">
                             <h3 class="box-title"></h3>
                             <div class="pull-right">
