@@ -255,12 +255,11 @@
     });
 
     $('#search-drama-name').click(function () {
-        var dramaname = $('#drama-name').val();
-        alert(dramaname.length);
-        if (dramaname == '') return false;
+        var search_key = $('#drama-name').val();
+        if (search_key == '' || search_key.length > 10) return false;
         $.ajax({
             url: '{{ url('api/dramasearch') }}',
-            data: {'dramaname': dramaname},
+            data: {'search_key': search_key},
             dataType: 'json',
             type: 'post',
             beforeSend: function () {

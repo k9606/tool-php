@@ -22,12 +22,14 @@ class IndexController extends Controller
 
     public function search(Request $request)
     {
-        $searchKey = $request->input('dramaname');
+        $searchKey = $request->input('search_key');
         if (!$searchKey || mb_strlen($searchKey) > 10) return json_msg();
-        DB::table('drama_search_history')
+
+        DB::table('drama_down_search_history')
             ->insert([
                 'ip' => $request->getClientIp(),
-                'search_key' => $searchKey,
+                'key' => $searchKey,
+                'type' => 2,
                 'created_at' => date('Y-m-d H:i:s', time())
             ]);
         $lists = DB::table('drama')
@@ -42,6 +44,14 @@ class IndexController extends Controller
     {
         $id = $request->input('did');
         if (!is_numeric($id)) return json_msg();
+
+        DB::table('drama_down_search_history')
+            ->insert([
+                'ip' => $request->getClientIp(),
+                'key' => $id,
+                'type' => 1,
+                'created_at' => date('Y-m-d H:i:s', time())
+            ]);
 
         $data = DB::table('drama_link')
             ->where('drama_id', $id)
