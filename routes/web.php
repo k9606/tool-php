@@ -11,14 +11,14 @@
 |
 */
 
-//Route::get('/test', function () {
-//    return view('test');
-//});
+/*Route::get('/timeline', function () {
+    return view('drama.timeline');
+});*/
 //
 //Route::get('/send/{msg?}', 'TestController@index');
 
 Route::group(['namespace' => 'Drama'], function () {
-    Route::resource('/', 'IndexController@index');
+    Route::get('/', 'IndexController@index');
 });
 
 //Auth::routes();
@@ -32,6 +32,6 @@ Route::group(['namespace' => 'Drama'], function () {
 //
 //});
 
-Auth::routes();
+/*Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index');*/

@@ -44,8 +44,8 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-clock-o"></i>
-                            <span class="label label-warning">1</span>
+                            2018-08-02 凌晨已更新&nbsp;&nbsp;&nbsp;&nbsp;
+                            <span class="label label-danger">new</span>
                         </a>
                     </li>
                 </ul>
@@ -61,7 +61,9 @@
                     <img src="{{asset('images/user-default.png')}}" class="img-circle" alt="头像">
                 </div>
                 <div class="pull-left info">
-                    @if (Auth::guest())
+                    <p>用户名</p>
+                    <a href="#"><i class="fa fa-circle text-yellow"></i> 未登陆</a>
+                    {{--@if (Auth::guest())
                         <p>用户名</p>
                         <a href="{{ url('/login') }}"><i class="fa fa-circle text-yellow"></i> 未登陆</a>
                     @else
@@ -72,7 +74,7 @@
                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    @endif
+                    @endif--}}
                 </div>
             </div>
             <ul class="sidebar-menu" data-widget="tree">
