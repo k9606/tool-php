@@ -44,7 +44,7 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown notifications-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            2018-08-02 凌晨已更新&nbsp;&nbsp;&nbsp;&nbsp;
+                            <?php echo date('Y-m-d', time());?> 已更新&nbsp;&nbsp;&nbsp;&nbsp;
                             <span class="label label-danger">new</span>
                         </a>
                     </li>
