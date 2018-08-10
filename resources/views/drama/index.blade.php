@@ -43,8 +43,8 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown notifications-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <?php echo date('Y-m-d', time());?> 已更新&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="http://bbs.knskzs.com" class="dropdown-toggle" data-toggle="dropdown">
+                            点击进入美剧论坛 &nbsp;&nbsp;&nbsp;&nbsp;
                             <span class="label label-danger">new</span>
                         </a>
                     </li>
