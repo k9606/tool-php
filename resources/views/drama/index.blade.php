@@ -44,7 +44,7 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown notifications-menu">
                         <a href="http://bbs.knskzs.com">
-                            点击进入美剧论坛 &nbsp;&nbsp;&nbsp;
+                            点击进入美剧论坛 &nbsp;&nbsp;
                             <span class="label label-danger">new</span>
                         </a>
                     </li>
@@ -79,7 +79,7 @@
             </div>
             <ul class="sidebar-menu" data-widget="tree">
                 <li><a href="#"><i class="fa fa-circle-o text-red"></i><span>&nbsp;美剧</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-purple"></i><span>&nbsp;群聊 (未上线)</span></a></li>
+                <li><a href="http://bbs.knskzs.com"><i class="fa fa-circle-o text-purple"></i><span>&nbsp;社区</span></a></li>
                 <li><a href="#"><i class="fa fa-circle-o text-green"></i><span>&nbsp;时间线 (未上线)</span></a></li>
             </ul>
         </section>
